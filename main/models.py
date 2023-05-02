@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Category(models.Model):
+    # Категория
     name = models.CharField('Название', max_length=200)
     url = models.SlugField(max_length=200, unique=True)
 
@@ -44,6 +45,7 @@ class Rating(models.Model):
     # Рейтинг
     ip = models.CharField('IP адресс', max_length=60)
     star = models.ForeignKey(RatingsStar, on_delete=models.CASCADE, verbose_name='Звезда')
+    mobileTvTabletDevice = models.ForeignKey('MobileTvTabletDevice', on_delete=models.CASCADE, verbose_name='Продукт')
     # не забыть подключить к каждому товару
 
     def __str__(self):
@@ -62,6 +64,7 @@ class Review(models.Model):
     parent = models.ForeignKey(
         'self', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Родитель'
     )
+    device = models.ForeignKey('MobileTvTabletDevice', on_delete=models.CASCADE, verbose_name='Продукт')
     # не забыть подключить к каждому товару
 
     def __str__(self):
@@ -86,23 +89,25 @@ class Brand(models.Model):
         ordering = 'title'
 
 
-class MobileDevice(models.Model):
-    # Мобильные телефоны
+class MobileTvTabletDevice(models.Model):
+    # Мобильные телефоны, телевизры, планшеты
     model = models.CharField('Название', max_length='100')
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     display_size = models.CharField('Размер дисплея', max_length=50)
-    processor = models.CharField('Процессор', max_length=100)
     main_camera = models.CharField('Основная камера', max_length=100)
-    battery_capacity = models.CharField(max_length=50)
+    battery_capacity = models.CharField('Ёмкость батареи', max_length=50)
     CPU = models.CharField('Процессор',max_length=50)
     ram = models.CharField('Оперативная память', max_length=50)
     operating_system = models.CharField('Операционная система', max_length=50)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    image = models.ImageField('Фото', upload_to='MobileTvTabletDevice/')
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, verbose_name='Марка')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
+    
 
     def __str__(self):
         return f"{self.brand} {self.model}"
     
     class Meta:
-        verbose_name = 'Мобильный телефон'
-        verbose_name_plural = 'Мобильные телефоны'
+        verbose_name = 'Электроника'
+        verbose_name_plural = 'Электроника'
         ordering = 'model'
