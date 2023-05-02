@@ -12,7 +12,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
-        ordering = 'name'
+        ordering = ['name']
 
 
 class Salesman(models.Model):
@@ -125,7 +125,7 @@ class ElectronicsDevice(models.Model):
     class Meta:
         verbose_name = 'Электроника'
         verbose_name_plural = 'Электроника'
-        ordering = 'name'
+        ordering = ['name']
 
 
 class BrandHouseholdAppliances(models.Model):
@@ -162,7 +162,7 @@ class Hfridge(models.Model):
     class Meta:
         verbose_name = 'Холодильник'
         verbose_name_plural = 'Холодильники'
-        ordering = 'name'
+        ordering = ['name']
 
 
 class BrandWashingMachine(models.Model):
