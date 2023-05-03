@@ -83,6 +83,7 @@ class ElectronicsDeviceAdmin(admin.ModelAdmin, ImageAdmin):
         'category'
     )
     search_fields = ('name', 'category__name')
+    prepopulated_fields = {'url': ('name', )}
 
 
 @admin.register(BrandHouseholdAppliances)
@@ -105,7 +106,7 @@ class HfridgeAdmin(admin.ModelAdmin, ImageAdmin):
         'brand',
         'category',
     )
-    list_display_links = ('name')
+    list_display_links = ('name', )
     list_filter = (
         'name',
         'series',
@@ -117,6 +118,7 @@ class HfridgeAdmin(admin.ModelAdmin, ImageAdmin):
         'category',
     )
     search_fields = ('name', 'category__name')
+    prepopulated_fields = {'url': ('name', )}
 
 
 @admin.register(BrandWashingMachine)
@@ -126,7 +128,7 @@ class BrandWashingMachineAdmin(admin.ModelAdmin, ImageAdmin):
 
 
 @admin.register(WashingMachine)
-class WashingMachineAdmin(admin.ModelAdmin):
+class WashingMachineAdmin(admin.ModelAdmin, ImageAdmin):
     # Стиральная машина бытовая техника
     list_display = (
         'name',
@@ -151,3 +153,4 @@ class WashingMachineAdmin(admin.ModelAdmin):
         'category',
     )
     search_fields = ('name', 'category__name')
+    prepopulated_fields = {'url': ('name', )}

@@ -91,8 +91,8 @@ class BrandElectronics(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Марка'
-        verbose_name_plural = 'Марки'
+        verbose_name = 'Марка электроники'
+        verbose_name_plural = 'Марки электроники'
 
 
 class ElectronicsDevice(models.Model):
@@ -114,6 +114,8 @@ class ElectronicsDevice(models.Model):
     ssd_capacity = models.CharField(
         'Объём SSD', max_length=20, blank=True, null=True)
     image = models.ImageField('Фото', upload_to='MobileTvTabletDevice/')
+    url = models.SlugField(max_length=200, unique=True, default='')
+    draft = models.BooleanField('Черновик', default=False)
     brand = models.ForeignKey(
         BrandElectronics, on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(
@@ -137,8 +139,8 @@ class BrandHouseholdAppliances(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Марка'
-        verbose_name_plural = 'Марки'
+        verbose_name = 'Марка бытовой техники холодильники'
+        verbose_name_plural = 'Марки бытовой техники холодильники'
 
 
 class Hfridge(models.Model):
@@ -151,6 +153,8 @@ class Hfridge(models.Model):
     weight = models.PositiveSmallIntegerField('Вес, кг')
     color = models.CharField('Цвет', max_length=50)
     image = models.ImageField('Изображение', upload_to='hfridge/')
+    url = models.SlugField(max_length=200, unique=True, default='')
+    draft = models.BooleanField('Черновик', default=False)
     brand = models.ForeignKey(BrandHouseholdAppliances,
                               on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(
@@ -174,8 +178,8 @@ class BrandWashingMachine(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Марка'
-        verbose_name_plural = 'Марки'
+        verbose_name = 'Марка стиральные машинки'
+        verbose_name_plural = 'Марки стиральные машинки'
 
 
 class WashingMachine(models.Model):
@@ -187,6 +191,8 @@ class WashingMachine(models.Model):
     weight = models.PositiveSmallIntegerField('Вес, кг')
     spin_speed = models.CharField('Скорость отжима', max_length=50)
     image = models.ImageField('Фото', upload_to='washing_machines/')
+    url = models.SlugField(max_length=200, unique=True, default='')
+    draft = models.BooleanField('Черновик', default=False)
     brand = models.ForeignKey(BrandHouseholdAppliances,
                               on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(
@@ -194,7 +200,7 @@ class WashingMachine(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = 'Стиральная машина'
         verbose_name_plural = 'Стиральные машинки'
