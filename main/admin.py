@@ -3,7 +3,7 @@ from .models import *
 from django.utils.safestring import mark_safe
 
 
-class ImageAdmin():
+class ImageAdminMixin():
     def get_image(self, object):
         return mark_safe(f"<img src={object.image.url} width='50' ")
 
@@ -11,15 +11,22 @@ class ImageAdmin():
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin, ImageAdmin):
+class CategoryAdmin(admin.ModelAdmin, ImageAdminMixin):
     # Категории
     list_display = ('name', 'url')
     prepopulated_fields = {'url': ('name', )}
     list_display_links = ('name', )
 
 
+class ReviewInline(admin.StackedInline):
+    # Прикрипление отзывов к фильму
+    model = Review
+    readonly_fields = ('name', 'email')
+    extra = 1
+
+
 @admin.register(Salesman)
-class SalesmanAdmin(admin.ModelAdmin, ImageAdmin):
+class SalesmanAdmin(ImageAdminMixin, admin.ModelAdmin):
     # Продавец
     list_display = ('name', 'get_image')
     list_display_links = ('name', )
@@ -41,13 +48,13 @@ class ReviewAdmin(admin.ModelAdmin):
 
 
 @admin.register(BrandElectronics)
-class BrandElectronicsAdmin(admin.ModelAdmin, ImageAdmin):
+class BrandElectronicsAdmin(ImageAdminMixin, admin.ModelAdmin):
     # марка электроники
     list_display = ('title', 'get_image')
 
 
 @admin.register(ElectronicsDevice)
-class ElectronicsDeviceAdmin(admin.ModelAdmin, ImageAdmin):
+class ElectronicsDeviceAdmin(ImageAdminMixin, admin.ModelAdmin):
     # Электроника
     list_display = (
         'name',
@@ -64,9 +71,11 @@ class ElectronicsDeviceAdmin(admin.ModelAdmin, ImageAdmin):
         'ssd_capacity',
         'get_image',
         'brand',
-        'category'
+        'category',
+        'draft'
     )
     list_display_links = ('name', )
+    inlines = [ReviewInline]
     list_filter = (
         'name',
         'series',
@@ -80,20 +89,22 @@ class ElectronicsDeviceAdmin(admin.ModelAdmin, ImageAdmin):
         'screen_refresh_rate',
         'ram_type',
         'ssd_capacity',
-        'category'
+        'category',
+        'draft'
     )
+    list_editable = ('draft',)
     search_fields = ('name', 'category__name')
     prepopulated_fields = {'url': ('name', )}
 
 
 @admin.register(BrandHouseholdAppliances)
-class BrandHouseholdAppliancesAdmin(admin.ModelAdmin, ImageAdmin):
+class BrandHouseholdAppliancesAdmin(ImageAdminMixin, admin.ModelAdmin):
     # марка бытовой техники холодильники
     list_display = ('title', 'get_image')
 
 
 @admin.register(Hfridge)
-class HfridgeAdmin(admin.ModelAdmin, ImageAdmin):
+class HfridgeAdmin(ImageAdminMixin, admin.ModelAdmin):
     # холодильник бытовая техника
     list_display = (
         'name',
@@ -105,8 +116,10 @@ class HfridgeAdmin(admin.ModelAdmin, ImageAdmin):
         'get_image',
         'brand',
         'category',
+        'draft'
     )
     list_display_links = ('name', )
+    inlines = [ReviewInline]
     list_filter = (
         'name',
         'series',
@@ -116,19 +129,21 @@ class HfridgeAdmin(admin.ModelAdmin, ImageAdmin):
         'color',
         'brand',
         'category',
+        'draft'
     )
+    list_editable = ('draft',)
     search_fields = ('name', 'category__name')
     prepopulated_fields = {'url': ('name', )}
 
 
 @admin.register(BrandWashingMachine)
-class BrandWashingMachineAdmin(admin.ModelAdmin, ImageAdmin):
+class BrandWashingMachineAdmin(ImageAdminMixin, admin.ModelAdmin):
     # марка бытовой техники стиральные машинки
     list_display = ('title', 'get_image')
 
 
 @admin.register(WashingMachine)
-class WashingMachineAdmin(admin.ModelAdmin, ImageAdmin):
+class WashingMachineAdmin(ImageAdminMixin, admin.ModelAdmin):
     # Стиральная машина бытовая техника
     list_display = (
         'name',
@@ -140,8 +155,10 @@ class WashingMachineAdmin(admin.ModelAdmin, ImageAdmin):
         'get_image',
         'brand',
         'category',
+        'draft'
     )
     list_display_links = ('name', )
+    inlines = [ReviewInline]
     list_filter = (
         'name',
         'price',
@@ -151,6 +168,8 @@ class WashingMachineAdmin(admin.ModelAdmin, ImageAdmin):
         'spin_speed',
         'brand',
         'category',
+        'draft'
     )
+    list_editable = ('draft',)
     search_fields = ('name', 'category__name')
     prepopulated_fields = {'url': ('name', )}
