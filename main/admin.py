@@ -42,7 +42,14 @@ class RatingStarAdmin(admin.ModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     # Отзыв
-    list_display = ('name', 'text', 'email')
+    list_display = (
+        'name', 
+        'text', 
+        'email', 
+        'electronicsDevice',
+        'hfridgeDevice',
+        'washingDevice' 
+        )
     list_display_links = ('name', )
     readonly_fields = ('name', 'email')
 

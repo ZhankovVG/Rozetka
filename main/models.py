@@ -47,7 +47,11 @@ class Rating(models.Model):
     star = models.ForeignKey(
         RatingsStar, on_delete=models.CASCADE, verbose_name='Звезда')
     electronicsDevice = models.ForeignKey(
-        'ElectronicsDevice', on_delete=models.CASCADE, verbose_name='Продукт')
+        'ElectronicsDevice', on_delete=models.CASCADE, verbose_name='Товар электоники')
+    hfridgeDevice = models.ForeignKey(
+        'Hfridge', on_delete=models.CASCADE, verbose_name='Товар холодильники')
+    washingDevice = models.ForeignKey(
+        'WashingMachine', on_delete=models.CASCADE, verbose_name='Товар стиральные машинки')
     # не забыть подключить к каждому товару
 
     def __str__(self):
@@ -66,11 +70,11 @@ class Review(models.Model):
     parent = models.ForeignKey(
         'self', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Родитель'
     )
-    device = models.ForeignKey(
+    electronicsDevice = models.ForeignKey(
         'ElectronicsDevice', on_delete=models.CASCADE, verbose_name='Товар электоники')
-    device = models.ForeignKey(
+    hfridgeDevice = models.ForeignKey(
         'Hfridge', on_delete=models.CASCADE, verbose_name='Товар холодильники')
-    device = models.ForeignKey(
+    washingDevice = models.ForeignKey(
         'WashingMachine', on_delete=models.CASCADE, verbose_name='Товар стиральные машинки')
     # не забыть подключить к каждому товару
 
