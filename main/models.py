@@ -120,6 +120,7 @@ class ElectronicsDevice(models.Model):
     image = models.ImageField('Фото', upload_to='MobileTvTabletDevice/')
     url = models.SlugField(max_length=200, unique=True, default='')
     draft = models.BooleanField('Черновик', default=False)
+    by_action = models.BooleanField('Акциооный товар', default=False)
     brand = models.ForeignKey(
         BrandElectronics, on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(
@@ -159,6 +160,7 @@ class Hfridge(models.Model):
     image = models.ImageField('Изображение', upload_to='hfridge/')
     url = models.SlugField(max_length=200, unique=True, default='')
     draft = models.BooleanField('Черновик', default=False)
+    by_action = models.BooleanField('Акциооный товар', default=False)
     brand = models.ForeignKey(BrandHouseholdAppliances,
                               on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(
@@ -197,6 +199,7 @@ class WashingMachine(models.Model):
     image = models.ImageField('Фото', upload_to='washing_machines/')
     url = models.SlugField(max_length=200, unique=True, default='')
     draft = models.BooleanField('Черновик', default=False)
+    by_action = models.BooleanField('Акциооный товар', default=False)
     brand = models.ForeignKey(BrandHouseholdAppliances,
                               on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(
