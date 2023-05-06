@@ -91,3 +91,60 @@ body {
 }
 
 /* header end */
+
+/* left conteiner start */
+
+.main-wrapper {
+    display: flex;
+}
+
+.left-conteiner {
+    width: 25%;
+    height: 100vh;
+    margin-bottom: 50px;
+    border-right: 1px solid rgb(212, 210, 210);
+}
+
+.left-conteiner {
+    font-size: 16px;
+}
+
+.left-conteiner ul {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    margin-left: 40px;
+    font-size: 13px;
+}
+
+.left-conteiner a {
+    text-decoration: none;
+    display: inline-block;
+    color: #467cad;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.left-conteiner a:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.left-conteiner img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* left conteiner end */
+
+
+/* right conteiner start */
+
+.main-content {
+    width: 75%;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* right conteiner end */

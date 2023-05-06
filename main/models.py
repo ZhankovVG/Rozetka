@@ -4,6 +4,7 @@ from django.db import models
 class Category(models.Model):
     # Категория
     name = models.CharField('Название', max_length=200)
+    image = models.ImageField('Иконки', upload_to='category_photo/')
     url = models.SlugField(max_length=200, unique=True)
 
     def __str__(self):

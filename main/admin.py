@@ -11,9 +11,9 @@ class ImageAdminMixin():
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin, ImageAdminMixin):
+class CategoryAdmin(admin.ModelAdmin):
     # Категории
-    list_display = ('name', 'url')
+    list_display = ('name', 'url', 'image')
     prepopulated_fields = {'url': ('name', )}
     list_display_links = ('name', )
 
