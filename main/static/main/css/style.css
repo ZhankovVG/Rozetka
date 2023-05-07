@@ -22,7 +22,7 @@ body {
 .header {
     background-color: #fff;
     height: 80px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(99, 235, 117, 0.1);
     position: fixed;
     top: 0;
     left: 0;
@@ -39,7 +39,7 @@ body {
     align-items: center;
     height: 50px;
     padding: 0 20px;
-    background-color: black;
+    background-color: #221f1f;
 }
 
 .header_logo img {
@@ -146,5 +146,65 @@ body {
     padding: 20px;
     background-color: rgb(255, 255, 255);
 }
+
+
+/* Slider image start */
+
+.main-content {
+    width: 75%;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+.image-slider {
+    position: relative;
+}
+
+.slider__img {
+    display: none;
+    max-width: 100%;
+}
+
+.slider__img.active {
+    display: block;
+}
+
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    color: #000;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.slider-control.prev {
+    left: 10px;
+}
+
+.slider-control.next {
+    right: 10px;
+}
+
+.slider-control.prev:hover,
+.slider-control.next:hover {
+    color: rgb(0, 255, 42);
+}
+
+
+/* Slider image end */
+
 
 /* right conteiner end */
