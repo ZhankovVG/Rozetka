@@ -103,6 +103,7 @@ class BrandElectronics(models.Model):
 class ElectronicsDevice(models.Model):
     # Электроника
     name = models.CharField('Название', max_length=300)
+    code = models.IntegerField('Код товара', blank=True, null=True)
     series = models.CharField('Серия', max_length=100)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     display_size = models.CharField('Размер дисплея', max_length=50)
@@ -121,7 +122,7 @@ class ElectronicsDevice(models.Model):
     image = models.ImageField('Фото', upload_to='MobileTvTabletDevice/')
     url = models.SlugField(max_length=200, unique=True, default='')
     draft = models.BooleanField('Черновик', default=False)
-    by_action = models.BooleanField('Акциооный товар', default=False)
+    by_action = models.BooleanField('Акциооный товар', default=False) 
     brand = models.ForeignKey(
         BrandElectronics, on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(
@@ -152,6 +153,7 @@ class BrandHouseholdAppliances(models.Model):
 class Hfridge(models.Model):
     # холодильник бытовая техника
     name = models.CharField('Название', max_length=300)
+    code = models.IntegerField('Код товара', blank=True, null=True)
     series = models.CharField('Серия', max_length=100)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     fridge_capacity = models.PositiveSmallIntegerField(
@@ -161,7 +163,7 @@ class Hfridge(models.Model):
     image = models.ImageField('Изображение', upload_to='hfridge/')
     url = models.SlugField(max_length=200, unique=True, default='')
     draft = models.BooleanField('Черновик', default=False)
-    by_action = models.BooleanField('Акциооный товар', default=False)
+    by_action = models.BooleanField('Акциооный товар', default=False)   
     brand = models.ForeignKey(BrandHouseholdAppliances,
                               on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(
@@ -192,6 +194,7 @@ class BrandWashingMachine(models.Model):
 class WashingMachine(models.Model):
     # Стиральная машина бытовая техника
     name = models.CharField('Название', max_length=300)
+    code = models.IntegerField('Код товара', blank=True, null=True)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     maximum_laundry_load = models.CharField('Загрузка', max_length=50)
     color = models.CharField('Цвет', max_length=20)
@@ -200,7 +203,7 @@ class WashingMachine(models.Model):
     image = models.ImageField('Фото', upload_to='washing_machines/')
     url = models.SlugField(max_length=200, unique=True, default='')
     draft = models.BooleanField('Черновик', default=False)
-    by_action = models.BooleanField('Акциооный товар', default=False)
+    by_action = models.BooleanField('Акциооный товар', default=False) 
     brand = models.ForeignKey(BrandHouseholdAppliances,
                               on_delete=models.CASCADE, verbose_name='Марка')
     category = models.ForeignKey(

@@ -79,7 +79,8 @@ class ElectronicsDeviceAdmin(ImageAdminMixin, admin.ModelAdmin):
         'get_image',
         'brand',
         'category',
-        'draft'
+        'draft',
+        'code',
     )
     list_display_links = ('name', )
     inlines = [ReviewInline]
@@ -97,7 +98,8 @@ class ElectronicsDeviceAdmin(ImageAdminMixin, admin.ModelAdmin):
         'ram_type',
         'ssd_capacity',
         'category',
-        'draft'
+        'draft',
+        'code',
     )
     list_editable = ('draft',)
     search_fields = ('name', 'category__name')
@@ -123,7 +125,8 @@ class HfridgeAdmin(ImageAdminMixin, admin.ModelAdmin):
         'get_image',
         'brand',
         'category',
-        'draft'
+        'draft',
+        'code',
     )
     list_display_links = ('name', )
     inlines = [ReviewInline]
@@ -136,7 +139,8 @@ class HfridgeAdmin(ImageAdminMixin, admin.ModelAdmin):
         'color',
         'brand',
         'category',
-        'draft'
+        'draft',
+        'code',
     )
     list_editable = ('draft',)
     search_fields = ('name', 'category__name')
@@ -162,7 +166,8 @@ class WashingMachineAdmin(ImageAdminMixin, admin.ModelAdmin):
         'get_image',
         'brand',
         'category',
-        'draft'
+        'draft',
+        'code',
     )
     list_display_links = ('name', )
     inlines = [ReviewInline]
@@ -175,7 +180,8 @@ class WashingMachineAdmin(ImageAdminMixin, admin.ModelAdmin):
         'spin_speed',
         'brand',
         'category',
-        'draft'
+        'draft',
+        'code',
     )
     list_editable = ('draft',)
     search_fields = ('name', 'category__name')
