@@ -83,7 +83,7 @@ ul li.nav-r {
     margin-left: 20px;
 }
 
-.li-2 {  
+.li-2 {
     margin-right: 50px;
 }
 
@@ -217,6 +217,38 @@ ul li.nav-r {
 
 
 /* Slider image end */
+
+
+/* Output of all products start */
+
+.conclusion-products {
+    max-width: 75%;
+}
+
+.grid-products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 40px;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.conclusion-products img {
+    width: 70px;
+}
+
+.grid-products p:hover {
+    color: rgb(255, 5, 5);
+    cursor: pointer;
+}
+
+
+/* Output of all products end */
 
 
 /* right conteiner end */

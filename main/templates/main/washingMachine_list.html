@@ -46,6 +46,20 @@
 			<img class="slider__img" src="{% static 'main/img/19.jpg' %}" alt="slider_img">
 			<img class="slider__img" src="{% static 'main/img/20.jpg' %}" alt="slider_img">
 			<img class="slider__img" src="{% static 'main/img/21.jpg' %}" alt="slider_img">
+			<hr>
+		</div>
+		<!-- withdrawal of all goods -->
+		<div class="conclusion-products">
+			<h4>Больше товаров для выбора</h4>
+			<div class="grid-products">
+				{% for el in washingMachine_list %}
+				<div class="product">
+					<img src="{{ el.image.url }}" alt=""><br>
+					<p>{{ el.name | truncatewords:2 }}</p>
+					{{ el.price }} ₴
+				</div>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 </div>
