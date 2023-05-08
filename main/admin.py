@@ -108,7 +108,7 @@ class ElectronicsDeviceAdmin(ImageAdminMixin, admin.ModelAdmin):
 
 @admin.register(BrandHouseholdAppliances)
 class BrandHouseholdAppliancesAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # марка бытовой техники холодильники
+    # марка бытовой техники 
     list_display = ('title', 'get_image')
 
 
@@ -145,12 +145,6 @@ class HfridgeAdmin(ImageAdminMixin, admin.ModelAdmin):
     list_editable = ('draft',)
     search_fields = ('name', 'category__name')
     prepopulated_fields = {'url': ('name', )}
-
-
-@admin.register(BrandWashingMachine)
-class BrandWashingMachineAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # марка бытовой техники стиральные машинки
-    list_display = ('title', 'get_image')
 
 
 @admin.register(WashingMachine)

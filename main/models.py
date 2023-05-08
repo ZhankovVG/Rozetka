@@ -138,7 +138,7 @@ class ElectronicsDevice(models.Model):
 
 
 class BrandHouseholdAppliances(models.Model):
-    # марка бытовой техники холодильники
+    # марка бытовой техники 
     title = models.CharField('Название', max_length=100)
     image = models.ImageField(upload_to='brand_HouseholdAppliances_images/')
 
@@ -146,8 +146,8 @@ class BrandHouseholdAppliances(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Марка бытовой техники холодильники'
-        verbose_name_plural = 'Марки бытовой техники холодильники'
+        verbose_name = 'Марка бытовой техники'
+        verbose_name_plural = 'Марки бытовой техники'
 
 
 class Hfridge(models.Model):
@@ -176,19 +176,6 @@ class Hfridge(models.Model):
         verbose_name = 'Холодильник'
         verbose_name_plural = 'Холодильники'
         ordering = ['name']
-
-
-class BrandWashingMachine(models.Model):
-    # марка бытовой техники стиральные машинки
-    title = models.CharField('Название', max_length=100)
-    image = models.ImageField(upload_to='brand_WashingMachine_images/')
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'Марка стиральные машинки'
-        verbose_name_plural = 'Марки стиральные машинки'
 
 
 class WashingMachine(models.Model):
