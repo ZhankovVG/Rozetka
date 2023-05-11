@@ -50,13 +50,15 @@
 		</div>
 		<!-- withdrawal of all goods -->
 		<div class="conclusion-products">
-			<h4>Больше товаров для выбора</h4>
+			<h4>Больше товаров для выбора</h4><br>
 			<div class="grid-products">
 				{% for el in washingMachine_list %}
 				<div class="product">
-					<img src="{{ el.image.url }}" alt=""><br>
-					<p>{{ el.name | truncatewords:2 }}</p>
-					{{ el.price }} ₴
+					<a href="">
+						<img src="{{ el.image.url }}" alt="photo"><br>
+						<p style="margin-top: 10px;">{{ el.name | truncatewords:2 }}</p>
+					</a>
+						{{ el.price }} ₴
 				</div>
 				{% endfor %}
 			</div>
