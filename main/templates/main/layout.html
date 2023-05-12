@@ -30,8 +30,8 @@
                     </a>
                 </div>
                 <div class="header_search">
-                    <form action="/" method="get">
-                        <input type="text" name="search" placeholder="Я ищу...">
+                    <form action="{% url 'search' %}" method="GET">
+                        <input type="text" name="q" placeholder="Я ищу...">
                         <button class="btn btn-success" type="submit">Найти</button>
                     </form>
                 </div>
@@ -42,7 +42,8 @@
                         </ul>
                         <li><i class="bi bi-three-dots-vertical"></i></li>
                         <ul>
-                            <li class="li-2"><a href="#">UA<img src="{% static 'main/img/Ukr.png' %}" alt="ukraine"></a></li>
+                            <li class="li-2"><a href="#">UA<img src="{% static 'main/img/Ukr.png' %}" alt="ukraine"></a>
+                            </li>
                         </ul>
                         <li class="nav-r"><a href="#"><i class="bi bi-card-list"></i></a></li>
                         <li class="nav-r"><a href="#"><i class="bi bi-plus-slash-minus"></i></a></li>
