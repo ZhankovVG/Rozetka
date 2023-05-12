@@ -58,8 +58,10 @@
 						<img src="{{ el.image.url }}" alt="photo"><br>
 						<p style="margin-top: 10px;">{{ el.name | truncatewords:2 }}</p>
 					</a>
-						{{ el.price }} ₴
+					{{ el.price }} ₴
 				</div>
+				{% endfor %}
+				{% for el in search_results %}
 				{% endfor %}
 			</div>
 		</div>
