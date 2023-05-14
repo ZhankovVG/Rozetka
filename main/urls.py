@@ -3,6 +3,6 @@ from .import views
 
 
 urlpatterns = [
-    path('', views.HouseholdAppliancesView.as_view(), name='main'),
+    path('', views.WashingMachineView.as_view(), name='main'),
     path('search/', views.SearchViews.as_view(), name='search')
 ]

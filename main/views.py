@@ -14,8 +14,8 @@ class CategoryMix:
         return context
 
 
-class HouseholdAppliancesView(CategoryMix, ListView):
-    # Output of all products
+class WashingMachineView(CategoryMix, ListView):
+    # Output WashingMachine
     model = WashingMachine
     queryset = WashingMachine.objects.filter(draft=False)
 
