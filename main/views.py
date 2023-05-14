@@ -23,4 +23,7 @@ class HouseholdAppliancesView(CategoryMix, ListView):
 class SearchViews(CategoryMix, ListView):
     # Search products
     def get_queryset(self):
-        return WashingMachine.objects.filter(name__icontains=self.request.GET.get('search'))
+        query = self.request.GET.get('search')
+        return WashingMachine.objects.filter(
+            Q(name__icontains=query) | Q(code__icontains=query)
+            )
