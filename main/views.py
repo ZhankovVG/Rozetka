@@ -10,9 +10,7 @@ class CategoryMix:
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['category'] = Category.objects.all()
-        context['washingMachine_list'] = WashingMachine.objects.filter(
-            draft=False)
-        context['search_query'] = self.request.GET.get('q')
+        context['washingMachine_list'] = self.get_queryset()
         return context
 
 
@@ -23,16 +21,6 @@ class HouseholdAppliancesView(CategoryMix, ListView):
 
 
 class SearchViews(CategoryMix, ListView):
-    template_name = 'main/washingMachine_list.html'
-    context_object_name = 'search_results'
-
+    # Search products
     def get_queryset(self):
-        query = self.request.GET.get('q')
-    
-        # electro_qs = ElectronicsDevice.objects.filter(Q(name__icontains=query) | Q(code__icontains=query))
-        hfridge_qs = Hfridge.objects.filter(Q(name__icontains=query) | Q(name__icontains=query))
-        # washing_qs = WashingMachine.objects.filter(Q(name__icontains=query) | Q(code__icontains=query))
-
-        qs = hfridge_qs.union(hfridge_qs)
-
-        return qs 
+        return WashingMachine.objects.filter(name__icontains=self.request.GET.get('search'))
