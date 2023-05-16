@@ -10,20 +10,20 @@ class CategoryMix:
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['category'] = Category.objects.all()
-        context['washingMachine_list'] = self.get_queryset()
+        context['product_list'] = self.get_queryset()
         return context
 
 
 class WashingMachineView(CategoryMix, ListView):
     # Output WashingMachine
-    model = WashingMachine
-    queryset = WashingMachine.objects.filter(draft=False)
+    model = Product
+    queryset = Product.objects.filter(draft=False)
 
 
 class SearchViews(CategoryMix, ListView):
     # Search products
     def get_queryset(self):
         query = self.request.GET.get('search')
-        return WashingMachine.objects.filter(
+        return Product.objects.filter(
             Q(name__icontains=query) | Q(code__icontains=query)
             )

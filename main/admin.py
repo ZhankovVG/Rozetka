@@ -12,14 +12,14 @@ class ImageAdminMixin():
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    # Категории
+    # Category
     list_display = ('name', 'url', 'image')
     prepopulated_fields = {'url': ('name', )}
     list_display_links = ('name', )
 
 
 class ReviewInline(admin.StackedInline):
-    # Прикрипление отзывов к фильму
+    # Attaching movie reviews
     model = Review
     readonly_fields = ('name', 'email')
     extra = 1
@@ -27,28 +27,26 @@ class ReviewInline(admin.StackedInline):
 
 @admin.register(Salesman)
 class SalesmanAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # Продавец
+    # Salesman
     list_display = ('name', 'get_image')
     list_display_links = ('name', )
 
 
 @admin.register(RatingsStar)
 class RatingStarAdmin(admin.ModelAdmin):
-    # Звезда рейтинга
+    # Star rating
     list_display = ('value', )
     list_display_links = ('value', )
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    # Отзыв
+    # Review
     list_display = (
         'name', 
         'text', 
         'email', 
-        'electronicsDevice',
-        'hfridgeDevice',
-        'washingDevice' 
+        'product',
         )
     list_display_links = ('name', )
     readonly_fields = ('name', 'email')
@@ -56,19 +54,25 @@ class ReviewAdmin(admin.ModelAdmin):
 
 @admin.register(BrandElectronics)
 class BrandElectronicsAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # марка электроники
+    # brand of electronics
     list_display = ('title', 'get_image')
 
 
-@admin.register(ElectronicsDevice)
-class ElectronicsDeviceAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # Электроника
+@admin.register(Product)
+class ProductAdmin(ImageAdminMixin, admin.ModelAdmin):
+    # Product
     list_display = (
         'name',
+        'code',
         'series',
         'price',
         'display_size',
         'main_camera',
+        'fridge_capacity',
+        'weight',
+        'color',
+        'maximum_laundry_load',
+        'spin_speed',
         'battery_capacity',
         'CPU',
         'ram',
@@ -77,10 +81,11 @@ class ElectronicsDeviceAdmin(ImageAdminMixin, admin.ModelAdmin):
         'ram_type',
         'ssd_capacity',
         'get_image',
-        'brand',
+        'brand_1',
+        'brand_2',
         'category',
         'draft',
-        'code',
+        'by_action',
     )
     list_display_links = ('name', )
     inlines = [ReviewInline]
@@ -98,85 +103,17 @@ class ElectronicsDeviceAdmin(ImageAdminMixin, admin.ModelAdmin):
         'ram_type',
         'ssd_capacity',
         'category',
+        'brand_1',
+        'brand_2',
         'draft',
-        'code',
+        'by_action',
     )
-    list_editable = ('draft',)
+    list_editable = ('draft', 'by_action')
     search_fields = ('name', 'category__name')
     prepopulated_fields = {'url': ('name', )}
 
 
 @admin.register(BrandHouseholdAppliances)
 class BrandHouseholdAppliancesAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # марка бытовой техники 
+    # Household appliances brand
     list_display = ('title', 'get_image')
-
-
-@admin.register(Hfridge)
-class HfridgeAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # холодильник бытовая техника
-    list_display = (
-        'name',
-        'series',
-        'price',
-        'fridge_capacity',
-        'weight',
-        'color',
-        'get_image',
-        'brand',
-        'category',
-        'draft',
-        'code',
-    )
-    list_display_links = ('name', )
-    inlines = [ReviewInline]
-    list_filter = (
-        'name',
-        'series',
-        'price',
-        'fridge_capacity',
-        'weight',
-        'color',
-        'brand',
-        'category',
-        'draft',
-        'code',
-    )
-    list_editable = ('draft',)
-    search_fields = ('name', 'category__name')
-    prepopulated_fields = {'url': ('name', )}
-
-
-@admin.register(WashingMachine)
-class WashingMachineAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # Стиральная машина бытовая техника
-    list_display = (
-        'name',
-        'price',
-        'maximum_laundry_load',
-        'color',
-        'weight',
-        'spin_speed',
-        'get_image',
-        'brand',
-        'category',
-        'draft',
-        'code',
-    )
-    list_display_links = ('name', )
-    inlines = [ReviewInline]
-    list_filter = (
-        'name',
-        'price',
-        'maximum_laundry_load',
-        'color',
-        'weight',
-        'spin_speed',
-        'brand',
-        'category',
-        'draft',
-        'code',
-    )
-    list_editable = ('draft',)
-    search_fields = ('name', 'category__name')
-    prepopulated_fields = {'url': ('name', )}

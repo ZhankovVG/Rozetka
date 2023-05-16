@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'Rozetka.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Create_MySQL',
+        'NAME': 'Create_MySQL_1',
         'USER': 'root',
         'PASSWORD': '1080Zxc',
         'HOST': '127.0.0.1',
