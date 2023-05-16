@@ -33,9 +33,9 @@ class Product(models.Model):
     # all items
     name = models.CharField('Название', max_length=300)
     code = models.IntegerField('Код товара', blank=True, null=True)
-    series = models.CharField('Серия', max_length=100)
+    series = models.CharField('Серия', max_length=100, blank=True, null=True)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
-    display_size = models.CharField('Размер дисплея', max_length=50)
+    display_size = models.CharField('Размер дисплея', max_length=50, blank=True, null=True)
     main_camera = models.CharField(
         'Основная камера', max_length=100, blank=True, null=True)
     fridge_capacity = models.PositiveSmallIntegerField(
@@ -44,10 +44,10 @@ class Product(models.Model):
     color = models.CharField('Цвет', max_length=50, blank=True, null=True)
     maximum_laundry_load = models.CharField('Загрузка', max_length=50, blank=True, null=True)
     spin_speed = models.CharField('Скорость отжима', max_length=50, blank=True, null=True)
-    battery_capacity = models.CharField('Ёмкость батареи', max_length=50)
-    CPU = models.CharField('Процессор', max_length=50)
-    ram = models.CharField('Оперативная память', max_length=50)
-    operating_system = models.CharField('Операционная система', max_length=50)
+    battery_capacity = models.CharField('Ёмкость батареи', max_length=50, blank=True, null=True)
+    CPU = models.CharField('Процессор', max_length=122, blank=True, null=True)
+    ram = models.CharField('Оперативная память', max_length=50, blank=True, null=True)
+    operating_system = models.CharField('Операционная система', max_length=50, blank=True, null=True)
     screen_refresh_rate = models.CharField(
         'Частота обновления экрана', max_length=30, blank=True, null=True)
     ram_type = models.CharField(
@@ -59,9 +59,9 @@ class Product(models.Model):
     draft = models.BooleanField('Черновик', default=False)
     by_action = models.BooleanField('Акциооный товар', default=False) 
     brand_1 = models.ForeignKey(
-        'BrandElectronics', on_delete=models.CASCADE, verbose_name='Марка')
+        'BrandElectronics', on_delete=models.CASCADE, verbose_name='Марка электроники', blank=True, null=True)
     brand_2 = models.ForeignKey(
-        'BrandHouseholdAppliances', on_delete=models.CASCADE, verbose_name='Марка')
+        'BrandHouseholdAppliances', on_delete=models.CASCADE, verbose_name='Марка бытовой техники', blank=True, null=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, verbose_name='Категория')
 
