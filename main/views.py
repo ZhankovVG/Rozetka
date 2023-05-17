@@ -27,3 +27,8 @@ class SearchViews(CategoryMix, ListView):
         return Product.objects.filter(
             Q(name__icontains=query) | Q(code__icontains=query)
             )
+    
+
+class DetailProductView(CategoryMix, DetailView):
+    model = Product
+    slug_field = 'url'

@@ -104,6 +104,8 @@ ul li.nav-r {
 
 /* header end */
 
+/* ----------------------------------- */
+
 /* left conteiner start */
 
 .main-wrapper {
@@ -150,6 +152,7 @@ ul li.nav-r {
 
 /* left conteiner end */
 
+/* ----------------------------------- */
 
 /* right conteiner start */
 
@@ -310,3 +313,47 @@ ul li.nav-r {
 
 
 /* right conteiner end */
+
+/* ---------------------------------------- */
+
+/* detail product start */
+
+.detail-product {
+    
+    margin: 20px;
+    margin-bottom: 10px;
+    margin: 20px;
+    font-size: 12px;
+}
+
+.detail-product ul {
+    list-style: none;
+    padding: 0; 
+}
+
+.detail-product li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.detail-product li:last-child {
+    margin-right: 0;
+}
+
+.detail-product a {
+    text-decoration: none;
+    color: #467cad;
+}
+
+.detail-product h4 {
+    font-size: 25px;
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    font-weight: bold;
+}
+
+.code {
+    text-align: right;
+}
+
+
+/* detail product end */

@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="detail-product">
+    <div>
+        <div>
+            <ul>
+                <li><a href="{% url 'main' %}">Главная страница  ></a></li>
+                <li><a href="">Выбранная категория ></a></li>
+                <li><a href="">Название стиральной страницы</a></li>
+            </ul>
+        </div>
+        <h4>{{ product.name }}</h4>
+    </div>
+    Тут будет рейтинг
+    <p class="code">Код: {{ product.code }}</p>
+</div>
+
+
+{% endblock %}
