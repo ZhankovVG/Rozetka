@@ -17,6 +17,7 @@ class WashingMachineView(CategoryMix, ListView):
     # Output WashingMachine
     model = Product
     queryset = Product.objects.filter(draft=False)
+    paginate_by = 5
 
 
 class SearchViews(CategoryMix, ListView):

@@ -278,4 +278,35 @@ ul li.nav-r {
 /* Output of all products end */
 
 
+/* pagination start */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.step-links {
+    display: flex;
+    align-items: center;
+}
+
+.step-links a {
+    margin-right: 10px;
+    color: #467cad;
+    text-decoration: none;
+}
+
+.step-links a:hover {
+    color: red;
+}
+
+.current {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* pagination end */
+
+
 /* right conteiner end */
