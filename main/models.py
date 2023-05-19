@@ -65,6 +65,9 @@ class Product(models.Model):
         'BrandHouseholdAppliances', on_delete=models.CASCADE, verbose_name='Марка бытовой техники', blank=True, null=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, verbose_name='Категория')
+    salesman = models.ForeignKey(
+        Salesman, on_delete=models.CASCADE, verbose_name='Продавец', blank=True, null=True
+    )
 
     def __str__(self):
         return f"{self.brand_1} {self.brand_2} {self.name}"
