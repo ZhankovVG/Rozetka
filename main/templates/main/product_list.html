@@ -54,7 +54,7 @@
 			<div class="grid-products">
 				{% for el in product_list %}
 				<div class="product">
-					<a href="">
+					<a href="{{ el.get_absolute_url }}">
 						<img src="{{ el.image.url }}" alt="photo"><br>
 						<p style="margin-top: 10px;">{{ el.name | truncatewords:2 }}</p>
 					</a>

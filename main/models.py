@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -55,7 +56,7 @@ class Product(models.Model):
     ssd_capacity = models.CharField(
         'Объём SSD', max_length=20, blank=True, null=True)
     image = models.ImageField('Фото', upload_to='MobileTvTabletDevice/')
-    url = models.SlugField(max_length=200, unique=True, default='')
+    url = models.SlugField(max_length=200, unique=True)
     draft = models.BooleanField('Черновик', default=False)
     by_action = models.BooleanField('Акциооный товар', default=False) 
     brand_1 = models.ForeignKey(
@@ -64,6 +65,9 @@ class Product(models.Model):
         'BrandHouseholdAppliances', on_delete=models.CASCADE, verbose_name='Марка бытовой техники', blank=True, null=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, verbose_name='Категория')
+    salesman = models.ForeignKey(
+        Salesman, on_delete=models.CASCADE, verbose_name='Продавец', blank=True, null=True
+    )
 
     def __str__(self):
         return f"{self.brand_1} {self.brand_2} {self.name}"
@@ -72,6 +76,9 @@ class Product(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
         ordering = ['name']
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'slug' : self.url})
 
 
 class BrandHouseholdAppliances(models.Model):
