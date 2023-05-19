@@ -357,6 +357,10 @@ ul li.nav-r {
     margin: 0;
 }
 
+.product-info ul li img {
+    width: 16px;
+}
+
 .detail-product li {
     display: inline-block;
     margin-right: 10px;
@@ -402,6 +406,14 @@ ul li.nav-r {
 
 .price-buy p button {
     margin-left: 30px;
+}
+
+.product-description a img {
+    width: 30px;
+}
+
+.features {
+    margin-left: 40px;
 }
 
 /* detail product end */
