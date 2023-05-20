@@ -16,6 +16,9 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
         ordering = ['name']
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'cat_slug' : self.url})
+
 
 class Salesman(models.Model):
     # Salesman
