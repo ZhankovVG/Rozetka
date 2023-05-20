@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from .models import *
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
@@ -32,3 +32,13 @@ class SearchViews(CategoryMix, ListView):
 class DetailProductView(CategoryMix, DetailView):
     model = Product
     slug_field = 'url'
+
+
+class CategoryOutputView(CategoryMix, ListView):
+    model = Product
+    template_name = 'main/product_list.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        category = get_object_or_404(Category, url=self.kwargs['cat_slug'])
+        return Product.objects.filter(category=category, draft=False)
