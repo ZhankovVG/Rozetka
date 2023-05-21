@@ -5,7 +5,7 @@ from django.db.models import Q
 
 
 
-class CategoryMix:
+class CategoryMixin:
     # Category output
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -13,14 +13,14 @@ class CategoryMix:
         return context
 
 
-class WashingMachineView(CategoryMix, ListView):
+class WashingMachineView(CategoryMixin, ListView):
     # Output WashingMachine
     model = Product
     queryset = Product.objects.filter(draft=False)
     paginate_by = 5
 
 
-class SearchViews(CategoryMix, ListView):
+class SearchViews(CategoryMixin, ListView):
     # Search products
     def get_queryset(self):
         query = self.request.GET.get('search')
@@ -29,12 +29,12 @@ class SearchViews(CategoryMix, ListView):
             )
     
 
-class DetailProductView(CategoryMix, DetailView):
+class DetailProductView(CategoryMixin, DetailView):
     model = Product
     slug_field = 'url'
 
 
-class CategoryOutputView(CategoryMix, ListView):
+class CategoryOutputView(CategoryMixin, ListView):
     model = Product
     template_name = 'main/product_list.html'
     paginate_by = 5

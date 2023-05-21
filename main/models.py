@@ -62,10 +62,8 @@ class Product(models.Model):
     url = models.SlugField(max_length=200, unique=True)
     draft = models.BooleanField('Черновик', default=False)
     by_action = models.BooleanField('Акциооный товар', default=False) 
-    brand_1 = models.ForeignKey(
-        'BrandElectronics', on_delete=models.CASCADE, verbose_name='Марка электроники', blank=True, null=True)
-    brand_2 = models.ForeignKey(
-        'BrandHouseholdAppliances', on_delete=models.CASCADE, verbose_name='Марка бытовой техники', blank=True, null=True)
+    brand = models.ForeignKey(
+        'BrandProduct', on_delete=models.CASCADE, verbose_name='Марка товара', blank=True, null=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, verbose_name='Категория')
     salesman = models.ForeignKey(
@@ -73,7 +71,7 @@ class Product(models.Model):
     )
 
     def __str__(self):
-        return f"{self.brand_1} {self.brand_2} {self.name}"
+        return f"{self.brand} {self.name}"
 
     class Meta:
         verbose_name = 'Товар'
@@ -84,30 +82,17 @@ class Product(models.Model):
         return reverse('detail', kwargs={'slug' : self.url})
 
 
-class BrandHouseholdAppliances(models.Model):
-    # Household brand
+class BrandProduct(models.Model):
+    # Product brand
     title = models.CharField('Название', max_length=100)
-    image = models.ImageField(upload_to='brand_HouseholdAppliances_images/')
+    image = models.ImageField(upload_to='brand_images/')
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = 'Марка бытовой техники'
-        verbose_name_plural = 'Марки бытовой техники'
-
-
-class BrandElectronics(models.Model):
-    # Electronics brand
-    title = models.CharField('Название', max_length=100)
-    image = models.ImageField(upload_to='brand_Electronics_images/')
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'Марка электроники'
-        verbose_name_plural = 'Марки электроники'
+        verbose_name = 'Марка товара'
+        verbose_name_plural = 'Марки товаров'
 
 
 class RatingsStar(models.Model):

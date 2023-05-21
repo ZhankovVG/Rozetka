@@ -52,7 +52,7 @@ class ReviewAdmin(admin.ModelAdmin):
     readonly_fields = ('name', 'email')
 
 
-@admin.register(BrandElectronics)
+@admin.register(BrandProduct)
 class BrandElectronicsAdmin(ImageAdminMixin, admin.ModelAdmin):
     # brand of electronics
     list_display = ('title', 'get_image')
@@ -81,8 +81,7 @@ class ProductAdmin(ImageAdminMixin, admin.ModelAdmin):
         'ram_type',
         'ssd_capacity',
         'get_image',
-        'brand_1',
-        'brand_2',
+        'brand',
         'category',
         'draft',
         'by_action',
@@ -103,8 +102,7 @@ class ProductAdmin(ImageAdminMixin, admin.ModelAdmin):
         'ram_type',
         'ssd_capacity',
         'category',
-        'brand_1',
-        'brand_2',
+        'brand',
         'draft',
         'by_action',
     )
@@ -112,8 +110,3 @@ class ProductAdmin(ImageAdminMixin, admin.ModelAdmin):
     search_fields = ('name', 'category__name')
     prepopulated_fields = {'url': ('name', )}
 
-
-@admin.register(BrandHouseholdAppliances)
-class BrandHouseholdAppliancesAdmin(ImageAdminMixin, admin.ModelAdmin):
-    # Household appliances brand
-    list_display = ('title', 'get_image')
