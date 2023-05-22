@@ -11,9 +11,8 @@
     <div class="product-info">
         <div>
             <ul>
-                <li><a href="{% url 'main' %}"><img src="{% static 'main/img/70083.png' %}" alt="photo-home"> ></a></li>
-                <li><a href="#">Выбранная категория ></a></li>
-                <li><a href="#">Название стиральной страницы</a></li>
+                <li><a href="{% url 'main' %}"><img src="{% static 'main/img/70083.png' %}" alt="photo-home"> </a></li>
+                <li><a href="{% url 'category' product.category.url %}">{{ product.category.name }}</a></li>
             </ul>
         </div>
         <h4>{{ product.name }}</h4>

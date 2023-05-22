@@ -42,3 +42,5 @@ class CategoryOutputView(CategoryMixin, ListView):
     def get_queryset(self):
         category = get_object_or_404(Category, url=self.kwargs['cat_slug'])
         return Product.objects.filter(category=category, draft=False)
+    
+
