@@ -10,6 +10,7 @@ class CategoryMixin:
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['category'] = Category.objects.all()
+        context['brand'] = BrandProduct.objects.all()
         return context
 
 
@@ -30,11 +31,13 @@ class SearchViews(CategoryMixin, ListView):
     
 
 class DetailProductView(CategoryMixin, DetailView):
+    # Full product description
     model = Product
     slug_field = 'url'
 
 
 class CategoryOutputView(CategoryMixin, ListView):
+    # Product listing by category
     model = Product
     template_name = 'main/product_list.html'
     paginate_by = 5
@@ -44,3 +47,12 @@ class CategoryOutputView(CategoryMixin, ListView):
         return Product.objects.filter(category=category, draft=False)
     
 
+class BrandOutputView(CategoryMixin, ListView):
+    # Brand output
+    model = Product
+    template_name = 'main/product_list.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        brand = get_object_or_404(BrandProduct, url=self.kwargs['brand_slug'])
+        return Product.objects.filter(brand=brand)
