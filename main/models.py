@@ -86,6 +86,7 @@ class BrandProduct(models.Model):
     # Product brand
     title = models.CharField('Название', max_length=100)
     image = models.ImageField(upload_to='brand_images/')
+    url = models.SlugField(max_length=15, unique=True)
 
     def __str__(self):
         return self.title
@@ -93,6 +94,9 @@ class BrandProduct(models.Model):
     class Meta:
         verbose_name = 'Марка товара'
         verbose_name_plural = 'Марки товаров'
+
+    def get_absolute_url(self):
+        return reverse('brand', kwargs={'brand_slug' : self.url})
 
 
 class RatingsStar(models.Model):
