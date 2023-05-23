@@ -221,8 +221,52 @@ ul li.nav-r {
 
 /* Slider image end */
 
+/* ------------------------------------ */
 
 /* Output of all products start */
+
+
+/* brand corection start */
+
+.brands-container {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.brands-wrapper {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    margin-bottom: -17px;
+    margin-left: 50px;
+    margin-right: 50px;
+    gap: 20px;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.scroll-left {
+    left: 10px;
+}
+
+.scroll-right {
+    right: 10px;
+}
+
+/* brand corection end */
+
 
 .conclusion-products {
     max-width: 100%;
