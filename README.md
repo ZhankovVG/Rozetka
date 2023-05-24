@@ -8,6 +8,7 @@ At this stage of Rozetka site development these actions were done:
 - In this project I connected venv and will work this way in the future.
 - Just hid the secret key because it is a must (but so far an error occurs in the future I will figure it out)
 - Enabled the MySQL database
+- Search the site : by name, by product code
 - Js made in a separate file
 - Brought categories, products, brands (and binding itself between them)
 - Create an admin panel
