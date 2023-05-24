@@ -53,9 +53,11 @@ class ReviewAdmin(admin.ModelAdmin):
 
 
 @admin.register(BrandProduct)
-class BrandElectronicsAdmin(ImageAdminMixin, admin.ModelAdmin):
+class BrandAdmin(ImageAdminMixin, admin.ModelAdmin):
     # brand of electronics
     list_display = ('title', 'get_image')
+    prepopulated_fields = {'url': ('title', )}
+
 
 
 @admin.register(Product)

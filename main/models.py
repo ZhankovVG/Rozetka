@@ -42,12 +42,6 @@ class Product(models.Model):
     display_size = models.CharField('Размер дисплея', max_length=50, blank=True, null=True)
     main_camera = models.CharField(
         'Основная камера', max_length=100, blank=True, null=True)
-    fridge_capacity = models.PositiveSmallIntegerField(
-        'Объем холодильной камеры, л', blank=True, null=True)
-    weight = models.PositiveSmallIntegerField('Вес, кг', blank=True, null=True)
-    color = models.CharField('Цвет', max_length=50, blank=True, null=True)
-    maximum_laundry_load = models.CharField('Загрузка', max_length=50, blank=True, null=True)
-    spin_speed = models.CharField('Скорость отжима', max_length=50, blank=True, null=True)
     battery_capacity = models.CharField('Ёмкость батареи', max_length=50, blank=True, null=True)
     CPU = models.CharField('Процессор', max_length=122, blank=True, null=True)
     ram = models.CharField('Оперативная память', max_length=50, blank=True, null=True)
@@ -58,7 +52,13 @@ class Product(models.Model):
         'Тип оперативной памяти', max_length=20, blank=True, null=True)
     ssd_capacity = models.CharField(
         'Объём SSD', max_length=20, blank=True, null=True)
-    image = models.ImageField('Фото', upload_to='MobileTvTabletDevice/')
+    spin_speed = models.CharField('Скорость отжима', max_length=50, blank=True, null=True)
+    maximum_laundry_load = models.CharField('Загрузка', max_length=50, blank=True, null=True)
+    color = models.CharField('Цвет', max_length=50, blank=True, null=True)
+    weight = models.PositiveSmallIntegerField('Вес, кг', blank=True, null=True)
+    fridge_capacity = models.PositiveSmallIntegerField(
+        'Объем холодильной камеры, л', blank=True, null=True)
+    image = models.ImageField('Фото', upload_to='Products_photo/')
     url = models.SlugField(max_length=200, unique=True)
     draft = models.BooleanField('Черновик', default=False)
     by_action = models.BooleanField('Акциооный товар', default=False) 
