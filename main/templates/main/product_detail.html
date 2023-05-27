@@ -1,5 +1,6 @@
 {% extends 'main/layout.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
 {{ product.name }}
@@ -17,7 +18,7 @@
         </div>
         <h4>{{ product.name }}</h4>
         Тут будет рейтинг
-        <p class="code">Код: {{ product.code }}</p>
+        <p class="code">{% trans Код %}: {{ product.code }}</p>
     </div>
     <div class="product-content">
         <div class="product-image">
@@ -25,12 +26,12 @@
         </div>
         <div class="product-description">
             <hr>
-            <p><b>Продавец: </b><img src="{{ product.salesman.image.url }}" alt="photo-salesman"></p>
+            <p><b>{% trans Продавец %}: </b><img src="{{ product.salesman.image.url }}" alt="photo-salesman"></p>
             <hr>
             <div class="price-buy">
                 <p>{{ product.price }} ₴ <button class="btn btn-success">Купить</button></p>
             </div>
-            <h5>Есть в наличии</h5>
+            <h5>Есть в наличии </h5>
             <a href="#"><img src="{% static 'main/img/503011.png' %}" alt="photo-comparison"></a>
             <a href="#"><img src="{% static 'main/img/yellow-heart.png' %}" alt="photo-heard"></a>
         </div>
@@ -39,63 +40,63 @@
         <h3>Характеристики:</h3>
 
         {% if product.series %}
-        <p>Серия: {{ product.series }}</p>
+        <p>{% trans Серия %}: {{ product.series }}</p>
         {% endif %}
 
         {% if product.display_size %}
-        <p>Размер дисплея: {{ product.display_size }}</p>
+        <p>{% trans 'Размер дисплея' %}: {{ product.display_size }}</p>
         {% endif %}
 
         {% if product.main_camera %}
-        <p>Основная камера: {{ product.main_camera }}</p>
+        <p>{% trans 'Основная камера' %}: {{ product.main_camera }}</p>
         {% endif %}
 
         {% if product.fridge_capacity %}
-        <p>Объем холодильной камеры, л: {{ product.fridge_capacity }}</p>
+        <p>{% trans 'Объем холодильной камеры, л' %}: {{ product.fridge_capacity }}</p>
         {% endif %}
 
         {% if product.weight %}
-        <p>Вес, кг: {{ product.weight }}</p>
+        <p>{% trans Вес %}: {{ product.weight }} кг</p>
         {% endif %}
 
         {% if product.color %}
-        <p>Цвет: {{ product.color }}</p>
+        <p>{% trans Цвет %}: {{ product.color }}</p>
         {% endif %}
 
         {% if product.maximum_laundry_load %}
-        <p>Загрузка: {{ product.maximum_laundry_load }}</p>
+        <p>{% trans Загрузка %}: {{ product.maximum_laundry_load }}</p>
         {% endif %}
 
         {% if product.spin_speed %}
-        <p>Скорость отжима: {{ product.spin_speed }}</p>
+        <p>{% trans 'Скорость отжима' %}: {{ product.spin_speed }}</p>
         {% endif %}
 
         {% if product.battery_capacity %}
-        <p>Ёмкость батареи: {{ product.battery_capacity }}</p>
+        <p>{% trans 'Ёмкость батареи' %}: {{ product.battery_capacity }}</p>
         {% endif %}
 
         {% if product.CPU %}
-        <p>Процессор: {{ product.CPU }}</p>
+        <p>{% trans Процессор %}: {{ product.CPU }}</p>
         {% endif %}
 
         {% if product.ram %}
-        <p>Оперативная память: {{ product.ram }}</p>
+        <p>{% trans 'Оперативная память' %}: {{ product.ram }}</p>
         {% endif %}
 
         {% if product.operating_system %}
-        <p>Операционная система: {{ product.operating_system }}</p>
+        <p>{% trans 'Операционная система' %}: {{ product.operating_system }}</p>
         {% endif %}
 
         {% if product.screen_refresh_rate %}
-        <p>Частота обновления экрана: {{ product.screen_refresh_rate }}</p>
+        <p>{% trans 'Частота обновления экрана' %}: {{ product.screen_refresh_rate }}</p>
         {% endif %}
 
         {% if product.ram_type %}
-        <p>Тип оперативной памяти: {{ product.ram_type }}</p>
+        <p>{% trans 'Тип оперативной памяти' %}: {{ product.ram_type }}</p>
         {% endif %}
 
         {% if product.ssd_capacity %}
-        <p>Объём SSD: {{ product.ssd_capacity }}</p>
+        <p>{% trans 'Объём SSD' %}: {{ product.ssd_capacity }}</p>
         {% endif %}
     </div>
 </div>

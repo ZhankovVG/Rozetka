@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-27 15:15+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\main\templates\account\login.html:7
+msgid "Войти"
+msgstr ""
+
+#: .\main\templates\account\login.html:17
+#: .\main\templates\account\login.html:59
+msgid "Sign In"
+msgstr "Войти"
+
+#: .\main\templates\account\login.html:24
+#, python-format
+msgid ""
+"Пожалуйста, войдите в систему с одной\n"
+"          одной из ваших существующих учетных записей или, <a href="
+"\"%(signup_url)s\">зарегистрироваться</a>\n"
+"          для %(site_name)s учетную запись и войдите в систему ниже:"
+msgstr ""
+
+#: .\main\templates\account\login.html:34
+msgid "or"
+msgstr ""
+
+#: .\main\templates\account\login.html:41
+#, python-format
+msgid ""
+"Если вы еще не создали учетную запись, то, пожалуйста\n"
+"          <a href=\"%(signup_url)s\">зарегистрироваться</a>"
+msgstr ""
+
+#: .\main\templates\account\login.html:58
+msgid "Forgot Password?"
+msgstr "Забыли пароль?"
+
+#: .\main\templates\account\logout.html:6
+#: .\main\templates\account\logout.html:13
+#: .\main\templates\account\logout.html:24
+msgid "Выйти"
+msgstr "Log out"
+
+#: .\main\templates\account\logout.html:17
+msgid "Вы уверены, что хотите выйти?"
+msgstr "Are you sure you want to get out?"
+
+#: .\main\templates\account\signup.html:5
+#: .\main\templates\account\signup.html:15
+#: .\main\templates\account\signup.html:31
+msgid "Регистрация"
+msgstr "Registration"
+
+#: .\main\templates\account\signup.html:21
+#, python-format
+msgid ""
+"У вас уже есть аккаунт? Тогда, пожалуйста <a href=\"%(login_url)s\">войти </"
+"a>."
+msgstr "Already have an account? Then please <a href=\"%(login_url)s\">login </"
+"a>."
+
+#: .\main\templates\main\product_detail.html:47
+msgid "Размер дисплея"
+msgstr "Display size"
+
+#: .\main\templates\main\product_detail.html:51
+msgid "Основная камера"
+msgstr "Main camera"
+
+#: .\main\templates\main\product_detail.html:55
+msgid "Объем холодильной камеры, л"
+msgstr "Fridge chamber volume, l"
+
+#: .\main\templates\main\product_detail.html:71
+msgid "Скорость отжима"
+msgstr "Spin speed"
+
+#: .\main\templates\main\product_detail.html:75
+msgid "Ёмкость батареи"
+msgstr "Battery capacity"
+
+#: .\main\templates\main\product_detail.html:83
+msgid "Оперативная память"
+msgstr "RAM"
+
+#: .\main\templates\main\product_detail.html:87
+msgid "Операционная система"
+msgstr "Operating system"
+
+#: .\main\templates\main\product_detail.html:91
+msgid "Частота обновления экрана"
+msgstr "Screen refresh rate"
+
+#: .\main\templates\main\product_detail.html:95
+msgid "Тип оперативной памяти"
+msgstr "Type of RAM"
+
+#: .\main\templates\main\product_detail.html:99
+msgid "Объём SSD"
+msgstr "SSD capacity"
