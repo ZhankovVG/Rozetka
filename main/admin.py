@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import *
 from django.utils.safestring import mark_safe
+from modeltranslation.admin import TranslationAdmin
+
 
 
 class ImageAdminMixin():
@@ -11,7 +13,7 @@ class ImageAdminMixin():
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     # Category
     list_display = ('name', 'url', 'image')
     prepopulated_fields = {'url': ('name', )}
@@ -26,7 +28,7 @@ class ReviewInline(admin.StackedInline):
 
 
 @admin.register(Salesman)
-class SalesmanAdmin(ImageAdminMixin, admin.ModelAdmin):
+class SalesmanAdmin(ImageAdminMixin, TranslationAdmin):
     # Salesman
     list_display = ('name', 'get_image')
     list_display_links = ('name', )
@@ -40,7 +42,7 @@ class RatingStarAdmin(admin.ModelAdmin):
 
 
 @admin.register(Review)
-class ReviewAdmin(admin.ModelAdmin):
+class ReviewAdmin(TranslationAdmin):
     # Review
     list_display = (
         'name', 
@@ -53,7 +55,7 @@ class ReviewAdmin(admin.ModelAdmin):
 
 
 @admin.register(BrandProduct)
-class BrandAdmin(ImageAdminMixin, admin.ModelAdmin):
+class BrandAdmin(ImageAdminMixin, TranslationAdmin):
     # brand of electronics
     list_display = ('title', 'get_image')
     prepopulated_fields = {'url': ('title', )}
@@ -61,7 +63,7 @@ class BrandAdmin(ImageAdminMixin, admin.ModelAdmin):
 
 
 @admin.register(Product)
-class ProductAdmin(ImageAdminMixin, admin.ModelAdmin):
+class ProductAdmin(ImageAdminMixin, TranslationAdmin):
     # Product
     list_display = (
         'name',

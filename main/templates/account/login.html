@@ -4,7 +4,7 @@
 {% load i18n %}
 {% load account %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block head_title %}{% trans "Войти" %}{% endblock %}
 
 {% block content %}
 <div class="content-wrapper">
@@ -21,9 +21,9 @@
 
 
         {% if socialaccount_providers %}
-        <p>{% blocktrans with site.name as site_name %}Please sign in with one
-          of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-          for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+        <p>{% blocktrans with site.name as site_name %}Пожалуйста, войдите в систему с одной
+          одной из ваших существующих учетных записей или, <a href="{{ signup_url }}">зарегистрироваться</a>
+          для {{ site_name }} учетную запись и войдите в систему ниже:{% endblocktrans %}</p>
 
         <div class="socialaccount_ballot">
 
@@ -38,8 +38,8 @@
         {% include "socialaccount/snippets/login_extra.html" %}
 
         {% else %}
-        <p>{% blocktrans %}If you have not created an account yet, then please
-          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+        <p>{% blocktrans %}Если вы еще не создали учетную запись, то, пожалуйста
+          <a href="{{ signup_url }}">зарегистрироваться</a>{% endblocktrans %}
         </p>
         {% endif %}
 
