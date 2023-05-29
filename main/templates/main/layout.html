@@ -40,14 +40,22 @@
                 </div>
                 <div class="header_nav">
                     <ul>
-                        <ul>
-                            <li class="li-1"><a href="#">RU</a></li>
-                        </ul>
-                        <li><i class="bi bi-three-dots-vertical"></i></li>
-                        <ul>
-                            <li class="li-2"><a href="#">UA<img src="{% static 'main/img/Ukr.png' %}" alt="ukraine"></a>
-                            </li>
-                        </ul>
+                        <form id="language-form" action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <div class="styled-select">
+                              <select id="language-select" name="language">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                  <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                                    {{ language.name_local }} ({{ language.code }})
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </form>
                         {% if user.is_authenticated %}
                         <li class="nav-r"><a href="{% url 'account_logout' %}"><i class="bi bi-card-list"></i></a></li>
                         {% else %}
@@ -59,25 +67,22 @@
                 </div>
             </div>
         </div>
-        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-            <input name="next" type="hidden" value="{{ redirect_to }}">
-            <select name="language">
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                        {{ language.name_local }} ({{ language.code }})
-                    </option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="Go">
-        </form>
     </header>
 
 
     {% block content %}
     {% endblock %}
+
+    <script>
+        // Получаем элементы формы и список выбора
+        var formElement = document.getElementById('language-form');
+        var selectElement = document.getElementById('language-select');
+      
+        // Обработчик события изменения выбранного значения
+        selectElement.addEventListener('change', function() {
+          formElement.submit(); // Автоматическая отправка формы
+        });
+      </script>
 </body>
 
 </html>

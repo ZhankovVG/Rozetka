@@ -81,6 +81,7 @@ body {
 
 ul li.nav-r {
     margin-left: 20px;
+    margin-top: 10px;
 }
 
 .li-2 {
@@ -100,6 +101,36 @@ ul li.nav-r {
 
 .li-2 img {
     width: 22px;
+}
+
+.styled-select {
+    position: relative;
+    display: inline-block;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.styled-select select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+}
+
+#language-select {
+    padding: 5px;
+    font-size: 13px;
+}
+
+.styled-select {
+    margin-top: 8px;
 }
 
 /* header end */

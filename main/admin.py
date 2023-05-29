@@ -42,7 +42,7 @@ class RatingStarAdmin(admin.ModelAdmin):
 
 
 @admin.register(Review)
-class ReviewAdmin(TranslationAdmin):
+class ReviewAdmin(admin.ModelAdmin):
     # Review
     list_display = (
         'name', 
@@ -59,7 +59,6 @@ class BrandAdmin(ImageAdminMixin, TranslationAdmin):
     # brand of electronics
     list_display = ('title', 'get_image')
     prepopulated_fields = {'url': ('title', )}
-
 
 
 @admin.register(Product)

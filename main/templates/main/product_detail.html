@@ -26,12 +26,12 @@
         </div>
         <div class="product-description">
             <hr>
-            <p><b>{% trans Продавец %}: </b><img src="{{ product.salesman.image.url }}" alt="photo-salesman"></p>
+            <p><b>{% trans 'Продавец' %}: </b><img src="{{ product.salesman.image.url }}" alt="photo-salesman"></p>
             <hr>
             <div class="price-buy">
-                <p>{{ product.price }} ₴ <button class="btn btn-success">Купить</button></p>
+                <p>{{ product.price }} ₴ <button class="btn btn-success">{% trans 'Купить' %}</button></p>
             </div>
-            <h5>Есть в наличии </h5>
+            <h5>{% trans 'Есть в наличии' %}</h5>
             <a href="#"><img src="{% static 'main/img/503011.png' %}" alt="photo-comparison"></a>
             <a href="#"><img src="{% static 'main/img/yellow-heart.png' %}" alt="photo-heard"></a>
         </div>
@@ -40,7 +40,7 @@
         <h3>Характеристики:</h3>
 
         {% if product.series %}
-        <p>{% trans Серия %}: {{ product.series }}</p>
+        <p>{% trans 'Серия' %}: {{ product.series }}</p>
         {% endif %}
 
         {% if product.display_size %}
@@ -56,15 +56,15 @@
         {% endif %}
 
         {% if product.weight %}
-        <p>{% trans Вес %}: {{ product.weight }} кг</p>
+        <p>{% trans 'Вес' %}: {{ product.weight }} кг</p>
         {% endif %}
 
         {% if product.color %}
-        <p>{% trans Цвет %}: {{ product.color }}</p>
+        <p>{% trans 'Цвет' %}: {{ product.color }}</p>
         {% endif %}
 
         {% if product.maximum_laundry_load %}
-        <p>{% trans Загрузка %}: {{ product.maximum_laundry_load }}</p>
+        <p>{% trans 'Загрузка' %}: {{ product.maximum_laundry_load }}</p>
         {% endif %}
 
         {% if product.spin_speed %}
@@ -76,7 +76,7 @@
         {% endif %}
 
         {% if product.CPU %}
-        <p>{% trans Процессор %}: {{ product.CPU }}</p>
+        <p>{% trans 'Процессор' %}: {{ product.CPU }}</p>
         {% endif %}
 
         {% if product.ram %}

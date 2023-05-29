@@ -8,21 +8,34 @@ class CategoryTranslationOptions(TranslationOptions):
 
 
 @register(Salesman)
-class ActorTranslationOptions(TranslationOptions):
+class SalesmanTranslationOptions(TranslationOptions):
     fields = ('name', )
 
 
 @register(BrandProduct)
-class GenreTranslationOptions(TranslationOptions):
+class BrandProductTranslationOptions(TranslationOptions):
     fields = ('title', )
 
 
 @register(Product)
-class MovieTranslationOptions(TranslationOptions):
-    fields = ('name', 'display_size',
-        )
-
-
-@register(Review)
-class MovieShotsTranslationOptions(TranslationOptions):
-    fields = ('name', 'text')
+class ProductTranslationOptions(TranslationOptions):
+    fields = (
+        'name',
+        'code',
+        'series',
+        'price',
+        'display_size',
+        'main_camera',
+        'fridge_capacity',
+        'weight',
+        'color',
+        'maximum_laundry_load',
+        'spin_speed',
+        'battery_capacity',
+        'CPU',
+        'ram',
+        'operating_system',
+        'screen_refresh_rate',
+        'ram_type',
+        'ssd_capacity',
+    )
