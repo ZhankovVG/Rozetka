@@ -1,7 +1,8 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from .models import *
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from django.db.models import Q
+from .forms import ReviewForm
 
 
 
@@ -56,3 +57,15 @@ class BrandOutputView(CategoryMixin, ListView):
     def get_queryset(self):
         brand = get_object_or_404(BrandProduct, url=self.kwargs['brand_slug'])
         return Product.objects.filter(brand=brand)
+    
+
+class ReviewsView(CategoryMixin, View):
+    # Adding a comment
+    def post(self, request, pk):
+        form = ReviewForm(request.POST)
+        product = Product.objects.get(id = pk)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.product = product
+            form.save()
+        return redirect(product.get_absolute_url())
