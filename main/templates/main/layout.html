@@ -74,13 +74,11 @@
     {% endblock %}
 
     <script>
-        // Получаем элементы формы и список выбора
         var formElement = document.getElementById('language-form');
         var selectElement = document.getElementById('language-select');
       
-        // Обработчик события изменения выбранного значения
         selectElement.addEventListener('change', function() {
-          formElement.submit(); // Автоматическая отправка формы
+          formElement.submit(); 
         });
       </script>
 </body>

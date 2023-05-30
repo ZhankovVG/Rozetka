@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 13:26+0300\n"
+"POT-Creation-Date: 2023-05-30 15:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: .\Rozetka\settings.py:134
 msgid "Russian"
 msgstr ""
@@ -64,17 +65,17 @@ msgstr ""
 #: .\main\templates\account\logout.html:13
 #: .\main\templates\account\logout.html:24
 msgid "Выйти"
-msgstr ""
+msgstr "Go out"
 
 #: .\main\templates\account\logout.html:17
 msgid "Вы уверены, что хотите выйти?"
-msgstr ""
+msgstr "Are you sure you want to exit?"
 
 #: .\main\templates\account\signup.html:5
 #: .\main\templates\account\signup.html:15
 #: .\main\templates\account\signup.html:31
 msgid "Регистрация"
-msgstr ""
+msgstr "Registration"
 
 #: .\main\templates\account\signup.html:21
 #, python-format
@@ -83,45 +84,49 @@ msgid ""
 "a>."
 msgstr ""
 
+#: .\main\templates\main\product_detail.html:21
+msgid "Код"
+msgstr "Code"
+
 #: .\main\templates\main\product_detail.html:29
 msgid "Продавец"
-msgstr ""
+msgstr "Salesman"
 
 #: .\main\templates\main\product_detail.html:32
 msgid "Купить"
-msgstr ""
+msgstr "Buy"
 
 #: .\main\templates\main\product_detail.html:34
 msgid "Есть в наличии"
-msgstr ""
+msgstr "Are available"
 
 #: .\main\templates\main\product_detail.html:43
 msgid "Серия"
-msgstr ""
+msgstr "Series"
 
 #: .\main\templates\main\product_detail.html:47
 msgid "Размер дисплея"
-msgstr ""
+msgstr "Display size"
 
 #: .\main\templates\main\product_detail.html:51
 msgid "Основная камера"
-msgstr ""
+msgstr "Main camera"
 
 #: .\main\templates\main\product_detail.html:55
 msgid "Объем холодильной камеры, л"
-msgstr ""
+msgstr "Refrigerating chamber volume, l"
 
 #: .\main\templates\main\product_detail.html:59
 msgid "Вес"
-msgstr ""
+msgstr "Weight"
 
 #: .\main\templates\main\product_detail.html:63
 msgid "Цвет"
-msgstr ""
+msgstr "Color"
 
 #: .\main\templates\main\product_detail.html:67
 msgid "Загрузка"
-msgstr ""
+msgstr "Loading"
 
 #: .\main\templates\main\product_detail.html:71
 msgid "Скорость отжима"
@@ -129,28 +134,28 @@ msgstr "Spin speed"
 
 #: .\main\templates\main\product_detail.html:75
 msgid "Ёмкость батареи"
-msgstr ""
+msgstr "Battery capacity"
 
 #: .\main\templates\main\product_detail.html:79
 msgid "Процессор"
-msgstr ""
+msgstr "CPU"
 
 #: .\main\templates\main\product_detail.html:83
 msgid "Оперативная память"
-msgstr ""
+msgstr "RAM"
 
 #: .\main\templates\main\product_detail.html:87
 msgid "Операционная система"
-msgstr ""
+msgstr "Operating system"
 
 #: .\main\templates\main\product_detail.html:91
 msgid "Частота обновления экрана"
-msgstr ""
+msgstr "Screen refresh rate"
 
 #: .\main\templates\main\product_detail.html:95
 msgid "Тип оперативной памяти"
-msgstr ""
+msgstr "RAM type"
 
 #: .\main\templates\main\product_detail.html:99
 msgid "Объём SSD"
-msgstr ""
+msgstr "SSD capacity"
