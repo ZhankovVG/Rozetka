@@ -98,6 +98,38 @@
         {% if product.ssd_capacity %}
         <p>{% trans 'Объём SSD' %}: {{ product.ssd_capacity }}</p>
         {% endif %}
+    </div><hr>
+    <div class="add-review">
+        <form action="{% url 'review' product.id %}" method="post" class="form">
+            <h3>Оставить отзыв о товаре</h3>
+            {% csrf_token %}
+            <div class="text">
+                <label for="username"></label>
+                <input type="text" name="name" placeholder="Имя *">
+            </div><br>
+
+            <div class="email">
+                <label for="useremail"></label>
+                <input type="email" name="email" placeholder="Email *">
+            </div><br>
+
+            <div class="text-user">
+                <label for="review"></label>
+                <textarea name="text" cols="23" rows="7" placeholder="Отзыв о товаре *"></textarea>
+            </div><br>
+
+            <div class="button">
+                <button type="submit" class="btn btn-success">Отправить</button>
+            </div>
+        </form>
+        <div class="comments-user">
+            <h3>Отзыв о товаре:</h3>
+            {% for review in product.review_set.all %}
+            <p><b>Имя :</b> {{ review.name }}</p>
+            <p><b>Коментарий :</b> {{ review.text }}</p>
+            <hr>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

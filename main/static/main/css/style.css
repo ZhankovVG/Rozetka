@@ -491,4 +491,21 @@ ul li.nav-r {
     margin-left: 40px;
 }
 
+/* review start */
+
+.add-review {
+    display: flex;
+}
+
+.form {
+    float: left;
+    margin-right: 100px;
+}
+
+.comments-user {
+    float: right;
+}
+
+/* review end */
+
 /* detail product end */
