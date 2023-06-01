@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    
+    'personal_cabinet',
 ]
 
 MIDDLEWARE = [
