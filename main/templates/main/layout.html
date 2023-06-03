@@ -57,7 +57,7 @@
                             </div>
                           </form>
                         {% if user.is_authenticated %}
-                        <li class="nav-r"><a href="{% url 'cabinet:personal_cabinet' %}"><i class="bi bi-card-list"></i></a></li>
+                        <li class="nav-r"><a href="{% url 'personal_cabinet:cabinet' %}"><i class="bi bi-card-list" style="margin-left: 7px;"></i></a></li>
                         {% else %}
                         <li class="nav-r"><a href="{% url 'account_login' %}"><i class="bi bi-person"></i></a></li>
                         {% endif %}
