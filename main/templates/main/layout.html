@@ -34,8 +34,8 @@
                 </div>
                 <div class="header_search">
                     <form action="{% url 'search' %}" method="GET">
-                        <input type="search" name="search" placeholder="Я ищу...">
-                        <button class="btn btn-success" type="submit">Найти</button>
+                        <input type="search" name="search" placeholder="{% trans 'Я ищу...' %}">
+                        <button class="btn btn-success" type="submit">{% trans 'Найти' %}</button>
                     </form>
                 </div>
                 <div class="header_nav">

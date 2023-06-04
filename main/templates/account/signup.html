@@ -18,7 +18,7 @@
       <div class="card-body">
 
 
-        <p>{% blocktrans %}У вас уже есть аккаунт? Тогда, пожалуйста <a href="{{ login_url }}">войти </a>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}У вас уже есть аккаунт? Тогда, пожалуйста <a href="{{ login_url }}" style="color: rgb(255, 0, 0);">ВОЙТИ </a>.{% endblocktrans %}</p>
 
         <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
           {% csrf_token %}

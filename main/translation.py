@@ -21,17 +21,8 @@ class BrandProductTranslationOptions(TranslationOptions):
 class ProductTranslationOptions(TranslationOptions):
     fields = (
         'name',
-        'code',
-        'series',
-        'price',
-        'display_size',
         'main_camera',
-        'fridge_capacity',
-        'weight',
         'color',
-        'maximum_laundry_load',
-        'spin_speed',
-        'battery_capacity',
         'CPU',
         'ram',
         'operating_system',

@@ -8,7 +8,7 @@
 
 {% block content %}
 <div>
-    <span>{{ user.username }}</span><br>
+    <span>{{ user.username }}</span><br><br>
 
 
 
@@ -16,5 +16,7 @@
 
     
     <p><a href="{% url 'personal_cabinet:wish_list' %}">Cписок желаний</a></p>
+
+    <p><a href="{% url 'account_logout' %}">Выход</a></p>
 </div>
 {% endblock %}
