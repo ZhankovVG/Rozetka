@@ -11,6 +11,7 @@ class CategoryMixin:
         context = super().get_context_data(*args, **kwargs)
         context['category'] = Category.objects.all()
         context['brand'] = BrandProduct.objects.all()
+        context['star_form'] = RatingForm()
         return context
 
 

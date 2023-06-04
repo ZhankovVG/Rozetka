@@ -41,6 +41,12 @@ class RatingStarAdmin(admin.ModelAdmin):
     list_display_links = ('value', )
 
 
+@admin.register(Rating)
+# Star
+class RatingStarAdmin(admin.ModelAdmin):
+    list_display = ('star', 'product', 'ip')
+
+
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     # Review

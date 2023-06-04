@@ -35,7 +35,7 @@
             </span>
         </form>
 
-        
+
         <p class="code">{% trans 'Код' %}: {{ product.code }}</p>
     </div>
     <div class="product-content">
@@ -116,7 +116,8 @@
         {% if product.ssd_capacity %}
         <p>{% trans 'Объём SSD' %}: {{ product.ssd_capacity }}</p>
         {% endif %}
-    </div><hr>
+    </div>
+    <hr>
     <div class="add-review">
         <form action="{% url 'review' product.id %}" method="post" class="form">
             <h3>{% trans 'Оставить отзыв о товаре' %}</h3>
@@ -151,7 +152,45 @@
     </div>
 </div>
 
+<script>
+    const rating = document.querySelector('form[name=rating]');
 
+    rating.addEventListener("change", function (e) {
+        // Получаем данные из формы
+        let data = new FormData(this);
+        fetch(`${this.action}`, {
+            method: 'POST',
+            body: data
+        })
+            .then(response => {
+                if (response.status === 201) {
+                    // Сохраняем значение рейтинга в cookie
+                    const selectedRating = document.querySelector('input[name=star]:checked').value;
+                    document.cookie = `rating=${selectedRating}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+                    alert("Рейтинг установлен");
+                } else {
+                    alert("Ошибка");
+                }
+            })
+            .catch(error => alert("Ошибка"));
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Восстанавливаем значение рейтинга из cookie
+        const cookieValue = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('rating='))
+            ?.split('=')[1];
+        if (cookieValue) {
+            const ratingInputs = document.querySelectorAll('input[name=star]');
+            ratingInputs.forEach(input => {
+                if (input.value === cookieValue) {
+                    input.checked = true;
+                }
+            });
+        }
+    });
+
+</script>
 
 
 {% endblock %}
