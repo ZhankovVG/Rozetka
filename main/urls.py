@@ -10,4 +10,6 @@ urlpatterns = [
     path('brand/<slug:brand_slug>/', views.BrandOutputView.as_view(), name='brand'),
     path('review/<int:pk>/', views.ReviewsView.as_view(), name='review'),
     path('add-rating/', views.AddStarsRating.as_view(), name='add_rating'),
+    path('profile/', views.PersonalCabinetView.as_view(), name='profile'),
+
 ]

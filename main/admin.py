@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import *
 from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
+from main.models import UserProfile
 
 
 
@@ -119,3 +120,8 @@ class ProductAdmin(ImageAdminMixin, TranslationAdmin):
     search_fields = ('name', 'category__name')
     prepopulated_fields = {'url': ('name', )}
 
+
+admin.site.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    readonly_fields = ('field1', 'field2')
+    list_display = ('field1', 'field2', 'field3')

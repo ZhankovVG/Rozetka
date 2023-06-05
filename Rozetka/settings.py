@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'modeltranslation',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,11 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
+
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     
-    'personal_cabinet',
 ]
 
 MIDDLEWARE = [

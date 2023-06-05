@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from .models import UserProfile
 
 
 class ReviewForm(forms.ModelForm):
@@ -21,3 +22,13 @@ class RatingForm(forms.ModelForm):
     class Meta:
         model = Rating
         fields = ('star',)
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['first_name', 'last_name', 'phone', 'profile_image']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['profile_image'].widget.attrs['accept'] = 'user_images/'

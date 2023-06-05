@@ -550,3 +550,43 @@ ul li.nav-r {
 /* //Checkbox stars end*/
 
 /* detail product end */
+
+/* profile start */
+
+.profile-form {
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.form-output-data img{
+    width: 300px;
+}
+
+/* profile end */

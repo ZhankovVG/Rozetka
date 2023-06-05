@@ -1,8 +1,8 @@
-from django.shortcuts import get_object_or_404, redirect, HttpResponse
+from django.shortcuts import get_object_or_404, redirect, HttpResponse, render
 from .models import *
 from django.views.generic import ListView, DetailView, View
 from django.db.models import Q
-from .forms import ReviewForm, RatingForm
+from .forms import *
 
 
 class CategoryMixin:
@@ -92,3 +92,22 @@ class AddStarsRating(View):
             return HttpResponse(status=201)
         else:
             return HttpResponse(status=400)
+
+
+class PersonalCabinetView(View):
+    def get(self, request):
+        user = request.user
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        form = UserProfileForm(instance=profile)
+        context = {'form': form}
+        return render(request, 'main/profile.html', context)
+
+    def post(self, request):
+        user = request.user
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+        context = {'form': form}
+        return render(request, 'main/profile.html', context)

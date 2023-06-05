@@ -1,0 +1,45 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block content %}
+<div>
+    <span>Приветствуем тебя <b style="color: rgb(255, 0, 0);">{{ user.username }}</b> в твоём личном
+        кабинете!!!</span><br><br>
+    <form method="post" action="{% url 'profile' %}" enctype="multipart/form-data" class="profile-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.first_name.id_for_label }}">Имя:</label>
+            {{ form.first_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.last_name.id_for_label }}">Фамилия:</label>
+            {{ form.last_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.phone.id_for_label }}">Телефон:</label>
+            {{ form.phone }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.profile_image.id_for_label }}">Изображение профиля:</label>
+            {{ form.profile_image }}
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+    <div class="form-output-data">
+        {% with profile=user.userprofile %}
+        <img src="{{ profile.profile_image.url }}" alt="Фото профиля">
+        <p>Имя: {{ user.first_name }}</p>
+        <p>Фамилия: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Телефон: {{ profile.phone }}</p>
+        {% endwith %}
+
+        <a href="{% url 'account_logout' %}" class="btn btn-primary">Выход</a>
+    </div>
+</div>
+{% endblock %}
