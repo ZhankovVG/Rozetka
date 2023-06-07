@@ -35,7 +35,10 @@
             </span>
         </form>
 
-
+        <button class="btn btn-primary add-to-comparison" data-product-id="{{ product.id }}">
+            Добавить в сравнение
+        </button>
+        
         <p class="code">{% trans 'Код' %}: {{ product.code }}</p>
     </div>
     <div class="product-content">
@@ -190,6 +193,38 @@
         }
     });
 
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const addToComparisonButtons = document.querySelectorAll('.add-to-comparison');
+
+        addToComparisonButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                addToComparison(productId);
+            });
+        });
+
+        function addToComparison(productId) {
+            fetch(`/comparison/add/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ product: productId })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Товар успешно добавлен в сравнение');
+                } else {
+                    alert('Ошибка при добавлении товара в сравнение');
+                }
+            })
+            .catch(error => {
+                alert('Ошибка при добавлении товара в сравнение');
+            });
+        }
+    });
 </script>
 
 

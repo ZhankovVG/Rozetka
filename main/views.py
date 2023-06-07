@@ -95,6 +95,7 @@ class AddStarsRating(View):
 
 
 class PersonalCabinetView(View):
+    # User profile
     def get(self, request):
         user = request.user
         profile, created = UserProfile.objects.get_or_create(user=user)
@@ -111,3 +112,16 @@ class PersonalCabinetView(View):
             return redirect('profile')
         context = {'form': form}
         return render(request, 'main/profile.html', context)
+
+
+class ComparisonView(CategoryMixin, ListView):
+    # Comparison product
+    model = Product
+    template_name = 'main/comparison.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        comparison_ids = self.request.session.get('comparison_ids', [])
+        comparison_products = Product.objects.filter(id__in=comparison_ids)
+        context['comparison_products'] = comparison_products
+        return context

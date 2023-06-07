@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+Сравнение товаров
+{% endblock %}
+
+{% block content %}
+<h1>Сравнение товаров</h1>
+{% for product in comparison_products %}
+    <div>
+        <h2>{{ product.name }}</h2>
+        <p>Цена: {{ product.price }}</p>
+        <!-- Выведите другие свойства продукта по вашему усмотрению -->
+    </div>
+{% endfor %}
+{% endblock %}
