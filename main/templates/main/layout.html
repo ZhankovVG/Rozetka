@@ -62,7 +62,8 @@
                         <li class="nav-r"><a href="{% url 'account_login' %}"><i class="bi bi-person"></i></a></li>
                         {% endif %}
                         <li class="nav-r"><a href="{% url 'add_to_comparison' %}"><i class="bi bi-plus-slash-minus"></i></a></li>
-                        <li class="nav-r"><a href="#"><i class="bi bi-cart3"></i></li>
+                        <li class="nav-r"><a href="{% url 'cart:cart_detail' %}"><i class="bi bi-cart3"></i>
+                            <span class="cart-item-count">{{ cart_item_count }}</span></a></li>                           
                     </ul>
                 </div>
             </div>
