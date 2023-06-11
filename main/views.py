@@ -3,6 +3,8 @@ from .models import *
 from django.views.generic import ListView, DetailView, View
 from django.db.models import Q
 from .forms import *
+from cart.forms import CartAddProductForm
+
 
 
 class CategoryMixin:
@@ -12,6 +14,7 @@ class CategoryMixin:
         context['category'] = Category.objects.all()
         context['brand'] = BrandProduct.objects.all()
         context['star_form'] = RatingForm()
+        context['cart_product_form'] = CartAddProductForm
         return context
 
 

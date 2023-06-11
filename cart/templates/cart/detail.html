@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+Корзина покупок
+{% endblock %}
+
+{% block content %}
+
+  <h1>Корзина покупок</h1>
+  <table class="cart">
+    <thead>
+      <tr>
+        <th>Картинка</th>
+        <th>Товар</th>
+        <th>Удалить</th>
+        <th>Общая стоимость</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart %}
+        {% with product=item.product %}
+          <tr>
+            <td>
+              <a href="{{ product.get_absolute_url }}">
+                <img src="{{ product.image.url }}" style="display: block; margin: 0 auto; width: 40px;">
+              </a>
+            </td>
+            <td>{{ product.name }}</td>
+            <td>
+              <a href="{% url 'cart:cart_remove' product.id %}">Удалить</a>
+            </td>
+            <td>
+              {{ item.price }}грн.
+            </td>
+          </tr>
+        {% endwith %}
+      {% endfor %}
+      <tr class="total">
+        <td>Всего</td>
+        <td colspan="2"></td>
+        <td class="num">{{ cart.get_total_price }} грн.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="text-right">
+    <a href="{% url 'main' %}" class="button light">В магазин</a>
+    <a href="#" class="button">Оформить заказ</a>
+  </p>
+{% endblock %}
