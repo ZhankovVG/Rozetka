@@ -14,6 +14,8 @@
     <!-- bootstrap end -->
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
     <script src="{% static 'main/js/script_slider.js' %}"></script>
+    <script src="{% static 'main/js/language-form.js' %}"></script>
+    <script src="{% static 'main/js/brands-wrapper.js' %}"></script>
     <link rel="shortcut icon" href="{% static 'main/img/rozetka.png' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <title>{% block title %}{% endblock %}</title>
@@ -44,24 +46,26 @@
                             {% csrf_token %}
                             <input name="next" type="hidden" value="{{ redirect_to }}">
                             <div class="styled-select">
-                              <select id="language-select" name="language">
-                                {% get_current_language as LANGUAGE_CODE %}
-                                {% get_available_languages as LANGUAGES %}
-                                {% get_language_info_list for LANGUAGES as languages %}
-                                {% for language in languages %}
-                                  <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
-                                    {{ language.name_local }} ({{ language.code }})
-                                  </option>
-                                {% endfor %}
-                              </select>
+                                <select id="language-select" name="language">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE%}selected{%endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                    {% endfor %}
+                                </select>
                             </div>
-                          </form>
+                        </form>
                         {% if user.is_authenticated %}
-                        <li class="nav-r"><a href="{% url 'profile' %}"><i class="bi bi-card-list" style="margin-left: 7px;"></i></a></li>
+                        <li class="nav-r"><a href="{% url 'profile' %}"><i class="bi bi-card-list"
+                                    style="margin-left: 7px;"></i></a></li>
                         {% else %}
                         <li class="nav-r"><a href="{% url 'account_login' %}"><i class="bi bi-person"></i></a></li>
                         {% endif %}
-                        <li class="nav-r"><a href="{% url 'add_to_comparison' %}"><i class="bi bi-plus-slash-minus"></i></a></li>
+                        <li class="nav-r"><a href="{% url 'add_to_comparison' %}"><i
+                                    class="bi bi-plus-slash-minus"></i></a></li>
                         <li class="nav-r"><a href="{% url 'cart:cart_detail' %}"><i class="bi bi-cart3"></i></a></li>
                     </ul>
                 </div>
@@ -73,14 +77,6 @@
     {% block content %}
     {% endblock %}
 
-    <script>
-        var formElement = document.getElementById('language-form');
-        var selectElement = document.getElementById('language-select');
-      
-        selectElement.addEventListener('change', function() {
-          formElement.submit(); 
-        });
-      </script>
 </body>
 
 </html>

@@ -99,24 +99,4 @@
 
 <!-- right conteiner end -->
 
-<script>
-	const brandsWrapper = document.querySelector('.brands-wrapper');
-	const scrollLeftButton = document.querySelector('.scroll-left');
-	const scrollRightButton = document.querySelector('.scroll-right');
-
-	scrollLeftButton.addEventListener('click', function () {
-		brandsWrapper.scrollBy({
-			left: -100,
-			behavior: 'smooth'
-		});
-	});
-
-	scrollRightButton.addEventListener('click', function () {
-		brandsWrapper.scrollBy({
-			left: 100,
-			behavior: 'smooth'
-		});
-	});
-</script>
-
 {% endblock %}
