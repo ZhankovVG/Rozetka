@@ -149,6 +149,7 @@ class Review(models.Model):
 
 
 class UserProfile(models.Model):
+    # UserProfile
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, blank=True, null=True)
     last_name = models.CharField(max_length=50, blank=True, null=True)

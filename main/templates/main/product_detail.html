@@ -35,7 +35,7 @@
             </span>
         </form>
 
-        
+
 
         <p class="code">{% trans 'Код' %}: {{ product.code }}</p>
     </div>
@@ -52,11 +52,11 @@
                 {% csrf_token %}
                 <input type="hidden" name="quantity" value="1">
                 <input type="hidden" name="update" value="false">
-                <button id="add-to-cart-button" class="btn btn-warning" value="submit">
+                <button id="add-to-cart-button" class="btn btn-success" value="submit">
                     <i class="bi bi-cart3"></i> В корзину
                 </button><br><br>
             </form>
-            <button class="btn btn-primary add-to-comparison" data-product-id="{{ product.id }}">
+            <button class="btn btn-success add-to-comparison" data-product-id="{{ product.id }}">
                 Добавить в сравнение
             </button><br><br>
 

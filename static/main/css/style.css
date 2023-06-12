@@ -587,7 +587,7 @@ ul li.nav-r {
     font-size: 14px;
     border-radius: 4px;
     text-decoration: none;
-    background-color: #007bff;
+    background-color: #0213fc;
     color: #fff;
 }
 
@@ -641,8 +641,6 @@ ul li.nav-r {
 /* profile end */
 
 /* cart start */
-
-
 
 table.cart {
     border-collapse: collapse;

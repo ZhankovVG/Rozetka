@@ -117,8 +117,7 @@ class PersonalCabinetView(View):
         return render(request, 'main/profile.html', context)
 
 
-class ComparisonView(CategoryMixin, ListView):
-    # Comparison product
+class ComparisonView(ListView):
     model = Product
     template_name = 'main/comparison.html'
 
@@ -128,3 +127,12 @@ class ComparisonView(CategoryMixin, ListView):
         comparison_products = Product.objects.filter(id__in=comparison_ids)
         context['comparison_products'] = comparison_products
         return context
+    
+
+class AddToComparisonView(View):
+    def post(self, request, *args, **kwargs):
+        product_id = request.POST.get('product')
+        comparison_ids = request.session.get('comparison_ids', [])
+        comparison_ids.append(product_id)
+        request.session['comparison_ids'] = comparison_ids
+        return redirect('comparison')
