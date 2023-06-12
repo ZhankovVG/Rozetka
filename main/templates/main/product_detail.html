@@ -35,9 +35,7 @@
             </span>
         </form>
 
-        <button class="btn btn-primary add-to-comparison" data-product-id="{{ product.id }}">
-            Добавить в сравнение
-        </button>
+        
 
         <p class="code">{% trans 'Код' %}: {{ product.code }}</p>
     </div>
@@ -49,9 +47,6 @@
             <hr>
             <p><b>{% trans 'Продавец' %}: </b><img src="{{ product.salesman.image.url }}" alt="photo-salesman"></p>
             <hr>
-            <div class="price-buy">
-                <p>{{ product.price }} ₴ <button class="btn btn-success">{% trans 'Купить' %}</button></p>
-            </div>
 
             <form action="{% url 'cart:cart_add' product.id %}" method="post">
                 {% csrf_token %}
@@ -59,8 +54,11 @@
                 <input type="hidden" name="update" value="false">
                 <button id="add-to-cart-button" class="btn btn-warning" value="submit">
                     <i class="bi bi-cart3"></i> В корзину
-                </button>
+                </button><br><br>
             </form>
+            <button class="btn btn-primary add-to-comparison" data-product-id="{{ product.id }}">
+                Добавить в сравнение
+            </button><br><br>
 
 
             <h5>{% trans 'Есть в наличии' %}</h5>

@@ -123,5 +123,6 @@ class ProductAdmin(ImageAdminMixin, TranslationAdmin):
 
 admin.site.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    readonly_fields = ('field1', 'field2')
-    list_display = ('field1', 'field2', 'field3')
+    list_display = ('first_name', 'last_name', 'profile_image')
+    readonly_fields = ('phone',)
+    list_filter = ('first_name',)
