@@ -1,0 +1,58 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+Оплата кредитною карткою
+{% endblock %}
+
+{% block content %}
+<h1>Спасибо!</h1>
+
+<h2>Теперь вы можете оплатить заказ кредитной картой</h2>
+
+<form action="." id="payment-form" method="post">
+  {% csrf_token %}
+
+  <label for="card-element">
+    Введите данные вашей карты
+  </label>
+  <div id="card-element">
+    <input id="card-number" class="StripeElement" type="text" placeholder="Номер карты">
+    <input id="card-expiry" class="StripeElement" type="text" placeholder="MM / YY">
+    <input id="card-cvc" class="StripeElement" type="text" placeholder="CVC">
+  </div>
+
+  <button class="button" type="submit">Оплатить</button>
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  var stripe = Stripe('pk_test_51NIcSGHsWzD41Tfu5Y1nSbemZ1aZ6bdrHzDTRuO1qBGrOfUPk9BOY2PVyQaiizBeU7FYTQuF86ePplsBNd30qgVY00lqN8xV49');
+  var elements = stripe.elements();
+  var cardElement = elements.create('card');
+
+  cardElement.mount('#card-element');
+
+  var form = document.getElementById('payment-form');
+  var submitButton = document.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    stripe.createToken(cardElement).then(function (result) {
+      if (result.error) {
+        console.error(result.error.message);
+      } else {
+        var token = result.token.id;
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripeToken');
+        hiddenInput.setAttribute('value', token);
+        form.appendChild(hiddenInput);
+
+        form.submit();
+      }
+    });
+  });
+</script>
+{% endblock %}

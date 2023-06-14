@@ -4,8 +4,6 @@ from main.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
 from main.models import Category
-import stripe
-from django.conf import settings
 
 
 @require_POST
@@ -38,32 +36,3 @@ def cart_detail(request):
         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'],
                                                                    'update': True})
     return render(request, 'cart/detail.html', {'cart': cart, 'categories': categories})
-
-
-def payment_view(request):
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-
-    if request.method == 'POST':
-        # Получение информации о платеже из формы
-        token = request.POST.get('stripeToken')
-        # Сумма оплаты в центах (в данном случае $10)
-        amount = 1000
-
-        try:
-            # Создание платежа с использованием Stripe API
-            charge = stripe.Charge.create(
-                amount=amount,
-                currency='usd',
-                source=token,
-                description='Оплата заказа'
-            )
-
-            # Оплата прошла успешно
-            return render(request, 'payment_success.html')
-
-        except stripe.error.CardError as e:
-            # Ошибка при обработке платежа с карты
-            error_message = e.error.message
-            return render(request, 'payment_error.html', {'error_message': error_message})
-
-    return render(request, 'cart/payment.html', {'publishable_key': settings.STRIPE_PUBLISHABLE_KEY})
