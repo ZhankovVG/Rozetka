@@ -40,14 +40,12 @@
         </form>
     </div>
     <div class="form-output-data">
-
+        
+        {% with profile=user.userprofile %}
         {% if profile.profile_image %}
         <img src="{{ profile.profile_image.url }}" alt="Фото профиля">
-        {% else %}
-        <img src="{% static 'main/img/monkey.jpg' %}" alt="monkey"><br><br>
         {% endif %}
-
-        {% with profile=user.userprofile %}
+        
         <p>Имя: {{ form.instance.first_name }}</p>
         <p>Фамилия: {{ form.instance.last_name }}</p>
         <p>Email: {{ user.email }}</p>

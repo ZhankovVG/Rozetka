@@ -11,6 +11,4 @@ urlpatterns = [
     path('review/<int:pk>/', views.ReviewsView.as_view(), name='review'),
     path('add-rating/', views.AddStarsRating.as_view(), name='add_rating'),
     path('profile/', views.PersonalCabinetView.as_view(), name='profile'),
-    path('comparison/', views.ComparisonView.as_view(), name='comparison'),
-    path('comparison/add/', views.AddToComparisonView.as_view(), name='add_to_comparison'),
 ]

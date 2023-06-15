@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 import stripe
+from cart.cart import Cart 
 
 
 def payment_view(request):
@@ -18,7 +19,10 @@ def payment_view(request):
                 description='Оплата заказа'
             )
 
-            return render(request, 'payment/payment_success.html')
+            cart = Cart(request)
+            selected_products = cart.get_cart()
+
+            return render(request, 'payment/payment_success.html', {'selected_products': selected_products})
 
         except stripe.error.CardError as e:
             error_message = e.error.message

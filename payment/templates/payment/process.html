@@ -6,24 +6,33 @@
 {% endblock %}
 
 {% block content %}
-<h1>Спасибо!</h1>
+<div class="payment-page">
+  <h1>Спасибо!</h1>
 
-<h2>Теперь вы можете оплатить заказ кредитной картой</h2>
+  <h2>Теперь вы можете оплатить заказ кредитной картой</h2><br>
 
-<form action="." id="payment-form" method="post">
-  {% csrf_token %}
+  <h3>Выбранные товары:</h3>
+  <ul>
+    {% for product in selected_products %}
+    <li>{{ product.name }} - {{ product.price }}</li>
+    {% endfor %}
+  </ul>
 
-  <label for="card-element">
-    Введите данные вашей карты
-  </label>
-  <div id="card-element">
-    <input id="card-number" class="StripeElement" type="text" placeholder="Номер карты">
-    <input id="card-expiry" class="StripeElement" type="text" placeholder="MM / YY">
-    <input id="card-cvc" class="StripeElement" type="text" placeholder="CVC">
-  </div>
+  <form action="." id="payment-form" method="post" class="payment-form">
+    {% csrf_token %}
 
-  <button class="button" type="submit">Оплатить</button>
-</form>
+    <label for="card-element">
+      Введите данные вашей карты
+    </label>
+    <div id="card-element">
+      <input id="card-number" class="StripeElement" type="text" placeholder="Номер карты">
+      <input id="card-expiry" class="StripeElement" type="text" placeholder="MM / YY">
+      <input id="card-cvc" class="StripeElement" type="text" placeholder="CVC">
+    </div><br>
+
+    <button class="button" type="submit">Оплатить</button>
+  </form>
+</div>
 
 <script src="https://js.stripe.com/v3/"></script>
 <script>
