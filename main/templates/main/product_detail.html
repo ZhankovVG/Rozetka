@@ -56,9 +56,11 @@
                     <i class="bi bi-cart3"></i> В корзину
                 </button><br><br>
             </form>
-            <button class="btn btn-success add-to-comparison">
-                Добавить в сравнение
-            </button><br><br>
+            <form action="{% url 'compare' %}" method="get">
+                <input type="hidden" name="product_ids" value="{{ product.id }}">
+                <button type="submit">Добавить в сравнение</button>
+              </form>
+              
 
 
             <h5>{% trans 'Есть в наличии' %}</h5>

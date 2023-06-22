@@ -6,7 +6,6 @@ from .forms import *
 from cart.forms import CartAddProductForm
 
 
-
 class CategoryMixin:
     # Category output
     def get_context_data(self, *args, **kwargs):
@@ -116,3 +115,11 @@ class PersonalCabinetView(View):
         context = {'form': form}
         return render(request, 'main/profile.html', context)
 
+
+class CompareView(CategoryMixin, View):
+    def get(self, request):
+        product_ids = request.GET.getlist('product_ids')
+        products = Product.objects.filter(id__in=product_ids)
+
+        context = {'products': products}
+        return render(request, 'main/compare.html', context)
