@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: mysql1
+    restart: always
+    environment:
+      MYSQL_DATABASE: Create_MySQL_1
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1080Zxc
+      MYSQL_ROOT_PASSWORD: 1080Zxc
+    ports:
+      - "3306:3306"
+
+  web:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
