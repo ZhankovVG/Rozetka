@@ -4,6 +4,8 @@ from django.views.generic import ListView, DetailView, View
 from django.db.models import Q
 from .forms import *
 from cart.forms import CartAddProductForm
+from .tasks import send_email_task
+
 
 
 class CategoryMixin:
@@ -123,3 +125,11 @@ class CompareView(CategoryMixin, View):
 
         context = {'products': products}
         return render(request, 'main/compare.html', context)
+
+
+def process_purchase(purchase_data):
+    # Sending emails via Celery task
+    subject = "Подтверждение покупки"
+    message = "Спасибо за вашу покупку!"
+    recipient_list = ['tpenep777@gmail.com']
+    send_email_task.delay(subject, message, recipient_list)

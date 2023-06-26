@@ -5,8 +5,8 @@ services:
     build: .
     restart: always
     depends_on:
-      mysql:
-        condition: service_healthy
+      - mysql
+      - redis
     ports:
       - "8000:8000"
 
@@ -23,3 +23,9 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"

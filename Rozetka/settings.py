@@ -179,5 +179,10 @@ SITE_ID = 1
 
 CART_SESSION_ID = 'cart'
 
+# don't forget to hide the secret key
 STRIPE_SECRET_KEY = 'sk_test_51NIcSGHsWzD41TfudpyTHSdCmUvncayZB8rX4Xays6dM9v98D2EcMh0nrtsdRKo7TVOqIAtZ8hOEkGKEnkBwAw5b00ZdK3HxZ6'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51NIcSGHsWzD41Tfu5Y1nSbemZ1aZ6bdrHzDTRuO1qBGrOfUPk9BOY2PVyQaiizBeU7FYTQuF86ePplsBNd30qgVY00lqN8xV49'
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
